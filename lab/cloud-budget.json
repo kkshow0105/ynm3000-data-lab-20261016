@@ -4,7 +4,22 @@
   "containsMarketData": false,
   "dailyLimit": 20,
   "days": {
-    "2026-10-16": {"externalFmpBaseline": 0, "reservedFmp": 0, "reservedFred": 0}
+    "2026-10-16": {
+      "externalFmpBaseline": 0,
+      "reservedFmp": 6,
+      "reservedFred": 2
+    }
   },
-  "experiments": []
+  "experiments": [
+    {
+      "id": "cloud-proof-v1",
+      "runId": "38860049120",
+      "targetDate": "2026-10-15",
+      "day": "2026-10-16",
+      "reservedAt": "2026-10-16T06:14:11.884Z",
+      "fmp": 6,
+      "fred": 2,
+      "state": "reserved"
+    }
+  ]
 }
