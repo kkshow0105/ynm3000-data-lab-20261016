@@ -1,7 +1,7 @@
-# Temporary synthetic JSON experiment
+# Manual JSON transport experiment
 
-No real market data, credentials, external market requests or Netlify connection.
+Synthetic data only. No market prices, trading dates, credentials, or Netlify connection.
 
-The scheduled workflow updates test.json, at most three times. Intentional failure mode leaves the last valid JSON unchanged. Workflow will be disabled after the experiment.
+Only workflow_dispatch is enabled. Authorized repository writers may use Run workflow. No scheduled jobs.
 
-The schedule uses UTC. Raw delivery may lag behind a successful commit.
+Use batch manual-batch-3 for the next sample; repeating a completed batch does not publish again. Failure/incomplete inputs stop before publication. History and manifest are committed together.

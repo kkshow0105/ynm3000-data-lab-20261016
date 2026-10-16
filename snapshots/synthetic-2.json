@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "kind": "SYNTHETIC_TEST_ONLY",
+  "containsMarketData": false,
+  "sequence": 2,
+  "generatedAt": "2026-10-16T02:36:22.923Z",
+  "trigger": "workflow_dispatch",
+  "runId": "38841275256",
+  "message": "Transport experiment. Not market prices or trading dates.",
+  "batch": "baseline-2",
+  "complete": true
+}

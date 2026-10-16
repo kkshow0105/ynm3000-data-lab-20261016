@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "kind": "SYNTHETIC_TEST_ONLY",
+  "containsMarketData": false,
+  "updatedAt": "2026-10-16T02:36:22.923Z",
+  "latest": {
+    "sequence": 2,
+    "batch": "baseline-2",
+    "path": "snapshots/synthetic-2.json",
+    "sha256": "c70eeec186dc01c0199c61d3a3af94b8b3cdee77bb17f862a8a16c4b2120e6e1",
+    "generatedAt": "2026-10-16T02:36:22.923Z"
+  },
+  "history": [
+    {
+      "sequence": 2,
+      "batch": "baseline-2",
+      "path": "snapshots/synthetic-2.json",
+      "sha256": "c70eeec186dc01c0199c61d3a3af94b8b3cdee77bb17f862a8a16c4b2120e6e1",
+      "generatedAt": "2026-10-16T02:36:22.923Z"
+    }
+  ]
+}
