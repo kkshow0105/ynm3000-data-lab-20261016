@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "kind": "SANITIZED_BUDGET_LEDGER",
+  "containsMarketData": false,
+  "revision": 0,
+  "previousHash": null,
+  "createdAt": "2026-10-16T11:38:29.773Z",
+  "updatedAt": "2026-10-16T11:38:29.773Z",
+  "policy": {
+    "projectRollingHours": 24,
+    "projectFmpLimit": 20,
+    "projectFredLimit": 4,
+    "providerFmpDailyLimit": 250,
+    "providerReset": {
+      "status": "UNCONFIRMED",
+      "utcHour": null
+    },
+    "simulationResetUtcHour": 20
+  },
+  "knownExternal": {
+    "fmp": 6,
+    "fred": 2,
+    "at": "2026-10-16T06:14:11.884Z"
+  },
+  "reservations": [],
+  "integrity": "672077112a2556abcb84608cae292413fa3f2be41f53f5eacaef87e4fbd26b08"
+}
