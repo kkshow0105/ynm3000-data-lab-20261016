@@ -2,13 +2,13 @@
   "schemaVersion": 1,
   "kind": "SYNTHETIC_TEST_ONLY",
   "containsMarketData": false,
-  "updatedAt": "2026-10-16T02:36:22.923Z",
+  "updatedAt": "2026-10-16T05:58:33.793Z",
   "latest": {
-    "sequence": 2,
-    "batch": "baseline-2",
-    "path": "snapshots/synthetic-2.json",
-    "sha256": "c70eeec186dc01c0199c61d3a3af94b8b3cdee77bb17f862a8a16c4b2120e6e1",
-    "generatedAt": "2026-10-16T02:36:22.923Z"
+    "sequence": 3,
+    "batch": "manual-batch-3",
+    "path": "snapshots/synthetic-3.json",
+    "sha256": "c86c50c2808f608e1f8c7a01ebad933695a28f0f9d286778a83c4a8d9fed2f91",
+    "generatedAt": "2026-10-16T05:58:33.793Z"
   },
   "history": [
     {
@@ -17,6 +17,13 @@
       "path": "snapshots/synthetic-2.json",
       "sha256": "c70eeec186dc01c0199c61d3a3af94b8b3cdee77bb17f862a8a16c4b2120e6e1",
       "generatedAt": "2026-10-16T02:36:22.923Z"
+    },
+    {
+      "sequence": 3,
+      "batch": "manual-batch-3",
+      "path": "snapshots/synthetic-3.json",
+      "sha256": "c86c50c2808f608e1f8c7a01ebad933695a28f0f9d286778a83c4a8d9fed2f91",
+      "generatedAt": "2026-10-16T05:58:33.793Z"
     }
   ]
 }

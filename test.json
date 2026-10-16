@@ -2,9 +2,11 @@
   "schemaVersion": 1,
   "kind": "SYNTHETIC_TEST_ONLY",
   "containsMarketData": false,
-  "sequence": 2,
-  "generatedAt": "2026-10-16T02:36:22.923Z",
+  "sequence": 3,
+  "batch": "manual-batch-3",
+  "complete": true,
+  "generatedAt": "2026-10-16T05:58:33.793Z",
   "trigger": "workflow_dispatch",
-  "runId": "38841275256",
-  "message": "Transport experiment. Not market prices or trading dates."
+  "runId": "38858594366",
+  "message": "Synthetic transport sample. No market prices or trading dates."
 }
