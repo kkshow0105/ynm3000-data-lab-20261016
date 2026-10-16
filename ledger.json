@@ -2,8 +2,8 @@
   "version": 1,
   "kind": "SANITIZED_BUDGET_LEDGER",
   "containsMarketData": false,
-  "revision": 12,
-  "previousHash": "1d605a3a64fe8f1803e499b99f98df1f206fdc429223a55606d1f2aae82f1e8d",
+  "revision": 13,
+  "previousHash": "825889521a91bb29eb832358360222b6f7230c06053cc3b5c81ea3d9d0a568ef",
   "createdAt": "2026-10-16T11:38:29.773Z",
   "updatedAt": "2026-10-16T13:30:37.059Z",
   "policy": {
@@ -238,7 +238,25 @@
         "coversFrom": "2026-10-14T13:30:37.059Z"
       },
       "periodStart": "2026-10-15T20:00:00.000Z"
+    },
+    {
+      "id": "market-simulation-38908366814-next",
+      "namespace": "simulation",
+      "at": "2026-10-16T13:30:37.059Z",
+      "targetDate": "2026-10-14",
+      "cost": {
+        "fmp": 1,
+        "fred": 0
+      },
+      "external": {
+        "known": true,
+        "fmp": 0,
+        "fred": 0,
+        "observedAt": "2026-10-16T13:30:37.059Z",
+        "coversFrom": "2026-10-14T13:30:37.059Z"
+      },
+      "periodStart": "2026-10-15T20:00:00.000Z"
     }
   ],
-  "integrity": "825889521a91bb29eb832358360222b6f7230c06053cc3b5c81ea3d9d0a568ef"
+  "integrity": "9c8b59b45f0e3b86296044bd4ff2d083c184d11f010d7d8b2fd375e57ceaf144"
 }
