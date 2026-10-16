@@ -1,0 +1,1423 @@
+{
+  "version": 1,
+  "tradingDate": "2026-10-14",
+  "updatedAt": "2026-10-16T08:13:27.210Z",
+  "source": "FMP",
+  "isProxy": false,
+  "calculation": {
+    "industry": "FMP交易所行业平均涨跌幅",
+    "index": "(收盘价 / 上一有效交易日收盘价 - 1) × 100",
+    "scope": "NASDAQ + NYSE交易所行业记录排行"
+  },
+  "datasets": {
+    "sector": [
+      {
+        "name": "Basic Materials",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Communication Services",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Consumer Cyclical",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Consumer Defensive",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Energy",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Financial Services",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Healthcare",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Industrials",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Real Estate",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Technology",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Utilities",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Basic Materials",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Communication Services",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Consumer Cyclical",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Consumer Defensive",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Energy",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Financial Services",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Healthcare",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Industrials",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Real Estate",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Technology",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Utilities",
+        "exchange": "NYSE",
+        "change": -2.5
+      }
+    ],
+    "industry": [
+      {
+        "name": "Synthetic Industry 0",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 1",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 2",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 3",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 4",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 5",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 6",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 7",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 8",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 9",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 10",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 11",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 12",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 13",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 14",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 15",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 16",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 17",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 18",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 19",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 20",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 21",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 22",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 23",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 24",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 25",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 26",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 27",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 28",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 29",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 30",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 31",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 32",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 33",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 34",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 35",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 36",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 37",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 38",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 39",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 40",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 41",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 42",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 43",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 44",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 45",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 46",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 47",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 48",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 49",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 50",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 51",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 52",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 53",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 54",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 55",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 56",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 57",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 58",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 59",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 60",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 61",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 62",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 63",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 64",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 65",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 66",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 67",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 68",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 69",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 70",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 71",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 72",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 73",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 74",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 75",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 76",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 77",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 78",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 79",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 80",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 81",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 82",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 83",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 84",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 85",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 86",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 87",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 88",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 89",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 90",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 91",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 92",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 93",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 94",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 95",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 96",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 97",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 98",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 99",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 100",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 101",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 102",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 103",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 104",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 105",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 106",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 107",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 108",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 109",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 110",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 111",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 112",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 113",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 114",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 115",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 116",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 117",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 118",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 119",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 120",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 121",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 122",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 123",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 124",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 125",
+        "exchange": "NASDAQ",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 126",
+        "exchange": "NASDAQ",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 0",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 1",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 2",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 3",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 4",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 5",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 6",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 7",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 8",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 9",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 10",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 11",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 12",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 13",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 14",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 15",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 16",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 17",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 18",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 19",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 20",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 21",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 22",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 23",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 24",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 25",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 26",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 27",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 28",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 29",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 30",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 31",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 32",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 33",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 34",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 35",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 36",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 37",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 38",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 39",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 40",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 41",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 42",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 43",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 44",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 45",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 46",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 47",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 48",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 49",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 50",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 51",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 52",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 53",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 54",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 55",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 56",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 57",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 58",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 59",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 60",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 61",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 62",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 63",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 64",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 65",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 66",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 67",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 68",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 69",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 70",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 71",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 72",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 73",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 74",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 75",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 76",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 77",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 78",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 79",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 80",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 81",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 82",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 83",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 84",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 85",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 86",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 87",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 88",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 89",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 90",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 91",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 92",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 93",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 94",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 95",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 96",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 97",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 98",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 99",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 100",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 101",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 102",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 103",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 104",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 105",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 106",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 107",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 108",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 109",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 110",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 111",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 112",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 113",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 114",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 115",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 116",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 117",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 118",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 119",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 120",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 121",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 122",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 123",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 124",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 125",
+        "exchange": "NYSE",
+        "change": 1.25
+      },
+      {
+        "name": "Synthetic Industry 126",
+        "exchange": "NYSE",
+        "change": -2.5
+      },
+      {
+        "name": "Synthetic Industry 127",
+        "exchange": "NYSE",
+        "change": 1.25
+      }
+    ]
+  },
+  "indices": [
+    {
+      "symbol": "^GSPC",
+      "name": "标普500",
+      "date": "2026-10-14",
+      "previousDate": "2026-10-13",
+      "close": 1286,
+      "previousClose": 1285,
+      "change": 0.07782101167315147
+    },
+    {
+      "symbol": "^IXIC",
+      "name": "纳斯达克综合",
+      "date": "2026-10-14",
+      "previousDate": "2026-10-13",
+      "close": 1286,
+      "previousClose": 1285,
+      "change": 0.07782101167315147
+    }
+  ]
+}

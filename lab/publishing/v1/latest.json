@@ -1,8 +1,8 @@
 {
   "version": 1,
   "kind": "SYNTHETIC_TEST_ONLY",
-  "release": "255f2159257b0640d45196513e0d84681c85e02fb77815fa33218cf32997e4ae",
-  "latest": "2026-10-14",
-  "publishedAt": "2026-10-16T08:13:27.249Z",
-  "manifestHash": "e3df1a6920b8f4c2b73bd73ff5a362de2f2b32dc1ebdd7f096cc9fc92ab67bbc"
+  "release": "0829cf61a94f67c05c3f68537b2ba7b7744f87cb16e5b998b6ff8bd2c49b3a5f",
+  "latest": "2026-10-15",
+  "publishedAt": "2026-10-16T08:16:11.670Z",
+  "manifestHash": "6f36e2f36fbc8d42d92c6e84c5d03be006292bbc869482ee0ae7e66d645e045e"
 }
