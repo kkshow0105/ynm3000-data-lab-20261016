@@ -7,7 +7,8 @@ on:
         default: false
         description: Fail before writing any JSON
   schedule:
-    - cron: '28 2 * * *'
+    - cron: '57 2,3 16 10 *'
+    - cron: '27 3 16 10 *'
 permissions:
   contents: write
   actions: write
@@ -32,7 +33,7 @@ jobs:
           const headers={Authorization:'Bearer '+process.env.GH_TOKEN,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'};
           async function api(path,options={}){const r=await fetch(base+path,{...options,headers:{...headers,...options.headers},signal:AbortSignal.timeout(15000)});if(!r.ok)throw Error('GitHub HTTP '+r.status);return r.status===204?null:r.json();}
           async function stop(){await api('/actions/workflows/test-json.yml/disable',{method:'PUT'});console.log('Experiment workflow disabled');}
-          if(Date.now()>Date.parse('2026-10-19T12:00:00Z')){await stop();process.exit(0);}
+          if(Date.now()>Date.parse('2026-10-16T05:00:00Z')){await stop();process.exit(0);}
           const old=await api('/contents/test.json?ref=main');
           const previous=JSON.parse(Buffer.from(old.content,'base64').toString('utf8'));
           if(previous.kind!=='SYNTHETIC_TEST_ONLY'||previous.containsMarketData!==false||!Number.isSafeInteger(previous.sequence))throw Error('Unexpected test schema');
