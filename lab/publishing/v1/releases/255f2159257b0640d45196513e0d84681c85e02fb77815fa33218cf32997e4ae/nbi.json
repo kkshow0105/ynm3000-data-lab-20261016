@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "series": "NASDAQNBI",
+  "source": "Nasdaq via FRED",
+  "sourceUrl": "https://fred.stlouisfed.org/series/NASDAQNBI",
+  "copyright": "Copyright © 2025, NASDAQ, Inc.",
+  "unit": "",
+  "basis": "Nasdaq指数日收盘",
+  "fetchedAt": "2026-10-16T08:13:27.164Z",
+  "observations": [
+    {
+      "date": "2026-09-21",
+      "close": 1263,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": null,
+      "previousClose": null
+    },
+    {
+      "date": "2026-09-22",
+      "close": 1264,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-09-21",
+      "previousClose": 1263
+    },
+    {
+      "date": "2026-09-23",
+      "close": 1265,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-09-22",
+      "previousClose": 1264
+    },
+    {
+      "date": "2026-09-24",
+      "close": 1266,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-09-23",
+      "previousClose": 1265
+    },
+    {
+      "date": "2026-09-25",
+      "close": 1267,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-09-24",
+      "previousClose": 1266
+    },
+    {
+      "date": "2026-09-28",
+      "close": 1270,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-09-25",
+      "previousClose": 1267
+    },
+    {
+      "date": "2026-09-29",
+      "close": 1271,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-09-28",
+      "previousClose": 1270
+    },
+    {
+      "date": "2026-09-30",
+      "close": 1272,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-09-29",
+      "previousClose": 1271
+    },
+    {
+      "date": "2026-10-01",
+      "close": 1273,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-09-30",
+      "previousClose": 1272
+    },
+    {
+      "date": "2026-10-02",
+      "close": 1274,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-10-01",
+      "previousClose": 1273
+    },
+    {
+      "date": "2026-10-05",
+      "close": 1277,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-10-02",
+      "previousClose": 1274
+    },
+    {
+      "date": "2026-10-06",
+      "close": 1278,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-10-05",
+      "previousClose": 1277
+    },
+    {
+      "date": "2026-10-07",
+      "close": 1279,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-10-06",
+      "previousClose": 1278
+    },
+    {
+      "date": "2026-10-08",
+      "close": 1280,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-10-07",
+      "previousClose": 1279
+    },
+    {
+      "date": "2026-10-09",
+      "close": 1281,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-10-08",
+      "previousClose": 1280
+    },
+    {
+      "date": "2026-10-12",
+      "close": 1284,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-10-09",
+      "previousClose": 1281
+    },
+    {
+      "date": "2026-10-13",
+      "close": 1285,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-10-12",
+      "previousClose": 1284
+    },
+    {
+      "date": "2026-10-14",
+      "close": 1286,
+      "fetchedAt": "2026-10-16T08:13:27.164Z",
+      "previousDate": "2026-10-13",
+      "previousClose": 1285
+    }
+  ]
+}
