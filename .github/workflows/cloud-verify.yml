@@ -1,0 +1,56 @@
+name: Bounded cloud collector verification (NO PUBLIC MARKET DATA)
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Offline Mock tests or one approved live experiment
+        type: choice
+        options: [offline, cloud]
+        default: offline
+      confirm_live:
+        description: Permit the one-time maximum FMP 6 and FRED 2 requests
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: bounded-cloud-market-verification
+  cancel-in-progress: false
+jobs:
+  verify:
+    if: github.repository == 'kkshow0105/ynm3000-data-lab-20261016' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Linux offline Mock tests (no market network)
+        run: node --test lab/cloud.test.cjs
+      - name: Check live secret availability without logging values
+        if: inputs.mode == 'cloud' && inputs.confirm_live
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: node -e "if(!process.env.FMP_API_KEY?.trim())process.exit(1)"
+      - name: Persist budget reservation before any market request
+        id: reserve
+        if: inputs.mode == 'cloud' && inputs.confirm_live
+        run: node lab/control.cjs reserve
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Collect once into ephemeral RUNNER_TEMP and print metadata only
+        if: steps.reserve.outputs.should_run == 'true'
+        run: node lab/verify-cloud.cjs
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+      - name: Persist counts on success or failure (no market values)
+        if: always() && steps.reserve.outputs.should_run == 'true'
+        run: node lab/control.cjs finish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Remove ephemeral raw data and local summaries
+        if: always()
+        run: |
+          node -e "const fs=require('node:fs'),p=require('node:path');const r=process.env.RUNNER_TEMP;if(!r)process.exit(1);for(const n of ['ynm-cloud-proof','ynm-cloud-summary.json','ynm-cloud-grant.json'])fs.rmSync(p.join(r,n),{recursive:true,force:true});"

@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "kind": "CLOUD_VALIDATION_BUDGET_ONLY",
+  "containsMarketData": false,
+  "dailyLimit": 20,
+  "days": {
+    "2026-10-16": {"externalFmpBaseline": 0, "reservedFmp": 0, "reservedFred": 0}
+  },
+  "experiments": []
+}
