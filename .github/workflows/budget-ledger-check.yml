@@ -1,0 +1,26 @@
+# Independent data repository ONLY. No market collection or publication.
+name: Git budget ledger Mock validation
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: market-data-publication
+  cancel-in-progress: false
+jobs:
+  validate:
+    if: github.repository == 'kkshow0105/ynm3000-data-lab-20261016' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ALLOW_REAL_MARKET_PUBLICATION: ${{ vars.ALLOW_REAL_MARKET_PUBLICATION }}
+      BUDGET_GENESIS_SHA: 8f8a7ba12051488484868566b9891ccb3b626a66
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Mock protocol safety tests
+        run: node --test tests/git-budget-ledger.test.js
+      - name: Persist virtual reservation and verify remote readback
+        run: node scripts/budget-ledger-lab.js
