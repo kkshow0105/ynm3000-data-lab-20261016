@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "kind": "SYNTHETIC_TEST_ONLY",
   "containsMarketData": false,
-  "sequence": 1,
-  "generatedAt": "2026-10-16T02:22:29.352Z",
+  "sequence": 2,
+  "generatedAt": "2026-10-16T02:36:22.923Z",
   "trigger": "workflow_dispatch",
-  "runId": "38840078444",
+  "runId": "38841275256",
   "message": "Transport experiment. Not market prices or trading dates."
 }
