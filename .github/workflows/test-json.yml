@@ -10,6 +10,7 @@ on:
     - cron: '28 2 * * *'
 permissions:
   contents: write
+  actions: write
 concurrency:
   group: synthetic-json-writer
   cancel-in-progress: false
@@ -29,14 +30,17 @@ jobs:
           node --input-type=module <<'NODE'
           const base='https://api.github.com/repos/'+process.env.REPO;
           const headers={Authorization:'Bearer '+process.env.GH_TOKEN,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'};
-          async function api(path,options={}){const r=await fetch(base+path,{...options,headers:{...headers,...options.headers},signal:AbortSignal.timeout(15000)});if(!r.ok)throw Error('GitHub HTTP '+r.status);return r.json();}
+          async function api(path,options={}){const r=await fetch(base+path,{...options,headers:{...headers,...options.headers},signal:AbortSignal.timeout(15000)});if(!r.ok)throw Error('GitHub HTTP '+r.status);return r.status===204?null:r.json();}
+          async function stop(){await api('/actions/workflows/test-json.yml/disable',{method:'PUT'});console.log('Experiment workflow disabled');}
+          if(Date.now()>Date.parse('2026-10-19T12:00:00Z')){await stop();process.exit(0);}
           const old=await api('/contents/test.json?ref=main');
           const previous=JSON.parse(Buffer.from(old.content,'base64').toString('utf8'));
           if(previous.kind!=='SYNTHETIC_TEST_ONLY'||previous.containsMarketData!==false||!Number.isSafeInteger(previous.sequence))throw Error('Unexpected test schema');
           if(process.env.SIMULATE_FAILURE==='true')throw Error('Intentional failure before write; previous JSON retained');
-          if(previous.sequence>=3){console.log('Experiment limit reached; no write');process.exit(0);}
+          if(previous.sequence>=3){await stop();process.exit(0);}
           const next={schemaVersion:1,kind:'SYNTHETIC_TEST_ONLY',containsMarketData:false,sequence:previous.sequence+1,generatedAt:new Date().toISOString(),trigger:process.env.EVENT_NAME,runId:process.env.RUN_ID,message:'Transport experiment. Not market prices or trading dates.'};
           if(!Number.isFinite(Date.parse(next.generatedAt))||next.sequence!==previous.sequence+1)throw Error('Validation failed');
           await api('/contents/test.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:'test: update synthetic JSON '+next.sequence,branch:'main',sha:old.sha,content:Buffer.from(JSON.stringify(next,null,2)+'\n').toString('base64')})});
           console.log(JSON.stringify({sequence:next.sequence,trigger:next.trigger,generatedAt:next.generatedAt}));
+          if(next.sequence>=3)await stop();
           NODE
