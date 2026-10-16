@@ -2,10 +2,10 @@
   "version": 1,
   "kind": "SANITIZED_BUDGET_LEDGER",
   "containsMarketData": false,
-  "revision": 7,
-  "previousHash": "6e8a18de094214ec504fab099915e0f3d5f8e79b69f1b159a807193ec9a6a629",
+  "revision": 8,
+  "previousHash": "873e0cf31ea1daf1f98d75237e5289f386d15b29cf9b27b42071a5e949354241",
   "createdAt": "2026-10-16T11:38:29.773Z",
-  "updatedAt": "2026-10-16T12:14:08.706Z",
+  "updatedAt": "2026-10-16T12:17:04.778Z",
   "policy": {
     "projectRollingHours": 24,
     "projectFmpLimit": 20,
@@ -148,7 +148,25 @@
         "coversFrom": "2026-10-14T12:14:08.706Z"
       },
       "periodStart": "2026-10-15T20:00:00.000Z"
+    },
+    {
+      "id": "accept-run-2",
+      "namespace": "simulation",
+      "at": "2026-10-16T12:17:04.778Z",
+      "targetDate": "2026-10-16",
+      "cost": {
+        "fmp": 1,
+        "fred": 0
+      },
+      "external": {
+        "known": true,
+        "fmp": 0,
+        "fred": 0,
+        "observedAt": "2026-10-16T12:17:04.778Z",
+        "coversFrom": "2026-10-14T12:17:04.778Z"
+      },
+      "periodStart": "2026-10-15T20:00:00.000Z"
     }
   ],
-  "integrity": "873e0cf31ea1daf1f98d75237e5289f386d15b29cf9b27b42071a5e949354241"
+  "integrity": "011bbca358c4eb703d194edd1155839c7728830913d2bcbdb9462dd53d70648e"
 }
