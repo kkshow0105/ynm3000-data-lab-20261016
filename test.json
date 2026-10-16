@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "kind": "SYNTHETIC_TEST_ONLY",
+  "containsMarketData": false,
+  "sequence": 0,
+  "generatedAt": "2026-10-16T02:20:02.390Z",
+  "trigger": "initialization",
+  "runId": null,
+  "message": "Transport experiment. Not market prices or trading dates."
+}
