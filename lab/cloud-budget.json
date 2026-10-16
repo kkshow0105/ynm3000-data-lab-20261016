@@ -19,7 +19,11 @@
       "reservedAt": "2026-10-16T06:14:11.884Z",
       "fmp": 6,
       "fred": 2,
-      "state": "reserved"
+      "state": "verification_finished",
+      "finishedAt": "2026-10-16T06:14:16.206Z",
+      "attemptedFmp": 6,
+      "attemptedFred": 2,
+      "validationComplete": true
     }
   ]
 }
