@@ -14,6 +14,7 @@ function prepare({bundle,previous=null,kind='SYNTHETIC_TEST_ONLY',allowReal=fals
  const pointer={version:1,kind,release,latest:checked.latest,publishedAt:now.toISOString(),manifestHash:hash(bundle['manifest.json'])};
  const files=Object.fromEntries(checked.files.map(name=>[prefix+'/releases/'+release+'/'+name,JSON.stringify(bundle[name],null,2)+'\n']));
  files[prefix+'/latest.json']=JSON.stringify(pointer,null,2)+'\n';
+ for(const secret of [process.env.FMP_API_KEY,process.env.FRED_API_KEY].filter(v=>v&&v.length>6))if(Object.values(files).some(text=>text.includes(secret)))throw Error('Private credential detected; publication blocked');
  return {pointer,prefix,files,coverage:checked.coverage,dates:checked.dates};
 }
 async function publish({bundle,previous,kind,allowReal,now,store,expectedHead}){

@@ -33,13 +33,14 @@ async function buildCandidate({dir,date,previous=null,mode='simulation',incomple
  if(core.soxForDate(sox,date).status!=='current'||core.dailySeriesForDate(nbi,'NBI',date).status!=='current')throw Error('FRED目标日尚未就绪；保留上一完整版本');
  await collect(opts);await syncPublic({sourceDir:raw,dir:out,now});const bundle=await loadBundle(out);checkBundle(bundle,now);return {alreadyComplete:false,bundle,counts:source.counts};
 }
-async function priorQuota(store,{mode,day,runId,root}){
+async function downloadQuota({run,item,dest}){try{cp.execFileSync('gh',['run','download',String(run.id),'--repo',REPO,'--name',item.name,'--dir',dest],{stdio:['ignore','pipe','pipe']});return JSON.parse(await fs.readFile(path.join(dest,'quota.json'),'utf8'));}catch{throw Error('无法恢复预算工件，停止而非重置');}}
+async function priorQuota(store,{mode,day,runId,root,download=downloadQuota}){
  const prior=[];let page=1,finished=false;
  while(!finished){if(page>5)throw Error('当日任务过多，停止自动核对预算');const r=await store.api('/actions/workflows/update-market.yml/runs?per_page=100&page='+page);if(!r.workflow_runs?.length)break;
  for(const run of r.workflow_runs){if(String(run.id)===String(runId))continue;if(budgetDay(new Date(run.created_at))!==day){if(new Date(run.created_at)<new Date(day+'T00:00:00+08:00'))finished=true;continue;}
  const artifacts=await store.api('/actions/runs/'+run.id+'/artifacts?per_page=100');const names=artifacts.artifacts.filter(a=>a.name.startsWith('quota-'+mode+'-'+day+'-'));
  if(!names.length){if(artifacts.artifacts.some(a=>/^quota-(real|simulation)-/.test(a.name)))continue;const jobs=await store.api('/actions/runs/'+run.id+'/jobs');const reserved=jobs.jobs?.some(j=>j.steps?.some(s=>s.name==='Persist reservation before collection'&&s.conclusion==='success'));if(reserved)throw Error('既有预算工件缺失；为保护额度已停止');continue;}
- for(const item of names){if(item.expired)throw Error('预算工件过期，无法安全恢复');const dest=path.join(root,'quota-download',String(item.id));await fs.mkdir(dest,{recursive:true});try{cp.execFileSync('gh',['run','download',String(run.id),'--repo',REPO,'--name',item.name,'--dir',dest],{stdio:['ignore','pipe','pipe']});prior.push(JSON.parse(await fs.readFile(path.join(dest,'quota.json'),'utf8')));}catch{throw Error('无法恢复预算工件，停止而非重置');}}
+ for(const item of names){if(item.expired)throw Error('预算工件过期，无法安全恢复');const dest=path.join(root,'quota-download',String(item.id));await fs.mkdir(dest,{recursive:true});try{prior.push(await download({run,item,dest}));}catch{throw Error('无法恢复预算工件，停止而非重置');}}
  }if(r.workflow_runs.length<100)finished=true;page++;}
  return prior;
 }
@@ -73,11 +74,11 @@ async function main(){
    if(mode==='real'&&!process.env.FMP_API_KEY?.trim())throw Error('缺少FMP Secret');
    const old=await existingBundle(prefix);const previous=old?.bundle||(mode==='real'?await bootstrapReal(store,root):null);
    const candidate=await buildCandidate({dir:root,date:grant.date,previous,mode,incomplete:process.env.SIMULATE_INCOMPLETE==='true',key:process.env.FMP_API_KEY});
-   if(!candidate.alreadyComplete){const result=await publish({bundle:candidate.bundle,previous,kind:mode==='real'?'REAL_MARKET_DATA':'SYNTHETIC_TEST_ONLY',allowReal:mode==='real'&&process.env.ALLOW_REAL_MARKET_PUBLICATION==='USER_CONFIRMED',store,expectedHead:grant.head});console.log(JSON.stringify({mode,kind:result.pointer.kind,targetDate:grant.date,published:true,release:result.pointer.release,dates:result.dates,sourceRequests:mode==='real'?candidate.counts:{FMP:0,FRED:0},mockCalls:mode==='simulation'?candidate.counts:undefined}));}
+   if(!candidate.alreadyComplete||!old){const result=await publish({bundle:candidate.bundle,previous,kind:mode==='real'?'REAL_MARKET_DATA':'SYNTHETIC_TEST_ONLY',allowReal:mode==='real'&&process.env.ALLOW_REAL_MARKET_PUBLICATION==='USER_CONFIRMED',store,expectedHead:grant.head});console.log(JSON.stringify({mode,kind:result.pointer.kind,targetDate:grant.date,published:true,release:result.pointer.release,dates:result.dates,sourceRequests:mode==='real'?candidate.counts:{FMP:0,FRED:0},mockCalls:mode==='simulation'?candidate.counts:undefined}));}
    quota.state='complete';quota.completedDate=grant.date;
   }catch{quota.state='incomplete_or_failed';process.exitCode=1;console.error('未发布新版本；请查看来源是否就绪及配置，旧版保持不变。');}
   finally{await atomicJson(path.join(root,'quota/quota.json'),quota);}
  }else throw Error('未知工作流步骤');
 }
-module.exports={gate,reserveQuota,boundedSource,buildCandidate};
+module.exports={gate,reserveQuota,boundedSource,buildCandidate,priorQuota};
 if(require.main===module)main().catch(()=>{console.error('任务安全停止，未启用真实发布或预算校验失败；没有输出原始响应。');process.exitCode=1;});
