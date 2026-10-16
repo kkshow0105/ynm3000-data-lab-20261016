@@ -1,13 +1,13 @@
 # Manual integration: Git budget is durable; Mock publishes only in memory.
-name: Update market closes (Git budget; real publication locked)
+name: Update market closes (manual; Git budget)
 on:
   workflow_dispatch:
     inputs:
       mode:
         type: choice
         options: [simulation, real]
-        default: simulation
-        description: Mock integration only until real publication is separately authorized
+        default: real
+        description: Real collection requires ENABLED and verified budget; simulation never publishes data
       target_date:
         type: string
         default: ''

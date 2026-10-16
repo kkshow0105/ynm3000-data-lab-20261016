@@ -7,7 +7,7 @@ const {createGitBudgetStore,reserveAndVerify,verifyGrant,stop}=require('./git-bu
 const {checkIndustrySnapshot,checkIndustryBundle,coverageDiagnostic}=require('./market-taxonomy');
 function reportFailure(e){const taxonomy=coverageDiagnostic(e);if(taxonomy)console.error(taxonomy);else if(/^BUDGET_/.test(e?.code||''))console.error(JSON.stringify({code:e.code,phase:e.phase,message:e.message}));}
 const MODE=()=>process.env.MARKET_MODE||'simulation';
-function gate(mode,flag){if(!['simulation','real'].includes(mode)||mode==='real'&&flag!=='USER_CONFIRMED')throw Error('真实行情公开发布未获最终确认，已在采集前阻止');}
+function gate(mode,flag){if(!['simulation','real'].includes(mode)||mode==='real'&&flag!=='ENABLED')throw Error('真实行情公开发布未获最终确认，已在采集前阻止');}
 function boundedSource(fetchImpl,date){const counts={FMP:0,FRED:0},seen=new Set();return {counts,request:async(url,options)=>{
  const u=new URL(url),q=u.searchParams;let id,provider;
  if(u.origin==='https://fred.stlouisfed.org'&&u.pathname==='/graph/fredgraph.csv'&&['NASDAQSOX','NASDAQNBI'].includes(q.get('id'))&&q.get('coed')===date){provider='FRED';id=q.get('id');}
@@ -72,7 +72,7 @@ async function collectRun({envelope,mode,runId,now=new Date(),flag,budgetStore,p
  await verifyGrant(budgetStore,g,{now:clock()});
  const candidate=await buildCandidate({dir,date:e.date,previous,mode,incomplete,now,key,fetchImpl});
  if(candidate.alreadyComplete&&old)return {skipped:true,sourceRequests:{FMP:0,FRED:0}};
- const result=await publish({bundle:candidate.bundle,previous,kind:mode==='real'?'REAL_MARKET_DATA':'SYNTHETIC_TEST_ONLY',allowReal:mode==='real'&&flag==='USER_CONFIRMED',store:publicationStore,expectedHead:e.publicationHead,now});
+ const result=await publish({bundle:candidate.bundle,previous,kind:mode==='real'?'REAL_MARKET_DATA':'SYNTHETIC_TEST_ONLY',allowReal:mode==='real'&&flag==='ENABLED',store:publicationStore,expectedHead:e.publicationHead,now});
  return {mode,kind:result.pointer.kind,targetDate:e.date,published:true,release:result.pointer.release,dates:result.dates,coverage:result.coverage,sourceRequests:mode==='real'?candidate.counts:{FMP:0,FRED:0},mockCalls:mode==='simulation'?candidate.counts:undefined,budgetCommit:g.head};
 }
 async function main(){

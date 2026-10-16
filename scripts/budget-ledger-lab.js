@@ -3,7 +3,7 @@
 const fs=require('node:fs/promises'),assert=require('node:assert/strict');
 const {REPO,createGitBudgetStore,reserveAndVerify,verifyGrant}=require('./git-budget-ledger');
 async function main(){
- if(process.env.GITHUB_REPOSITORY!==REPO||process.env.GITHUB_EVENT_NAME!=='workflow_dispatch'||process.env.GITHUB_REF!=='refs/heads/main'||process.env.GITHUB_RUN_ATTEMPT!=='1'||process.env.ALLOW_REAL_MARKET_PUBLICATION!=='DISABLED')throw Error('Only the approved manual Mock run with real publication DISABLED is allowed');
+ if(process.env.GITHUB_REPOSITORY!==REPO||process.env.GITHUB_EVENT_NAME!=='workflow_dispatch'||process.env.GITHUB_REF!=='refs/heads/main'||process.env.GITHUB_RUN_ATTEMPT!=='1'||!['DISABLED','ENABLED'].includes(process.env.ALLOW_REAL_MARKET_PUBLICATION))throw Error('Only the approved manual Mock run with a recognized publication flag is allowed');
  const token=process.env.GH_TOKEN;if(!token)throw Error('GitHub runner token missing');
  const api=async(p,method='GET',body)=>{const response=await fetch('https://api.github.com/repos/'+REPO+p,{method,headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json','Content-Type':'application/json'},...(body===undefined?{}:{body:JSON.stringify(body)}),signal:AbortSignal.timeout(20000),redirect:'error'});if(!response.ok){const e=Error('GitHub budget HTTP '+response.status);e.status=response.status;e.httpBody=await response.text();e.method=method;e.path=p;e.requestId=response.headers.get('x-github-request-id');e.category=classifyGitError(e);throw e;}return response.json();};
  const store=createGitBudgetStore({api,genesis:process.env.BUDGET_GENESIS_SHA}),before=await store.read(),now=new Date();
@@ -12,7 +12,7 @@ async function main(){
  if(grant.authorized){await verifyGrant(store,grant);virtualCalls++;} // A counter only, never HTTP.
  const duplicate=await reserveAndVerify(store,request);if(duplicate.authorized||duplicate.status!=='duplicate')throw Error('Duplicate task unexpectedly authorized');
  const after=await store.read();assert.equal(after.head,grant.head);assert.equal(after.ledger.revision,before.ledger.revision+1);assert.deepEqual(after.ledger.reservations.slice(0,-1),before.ledger.reservations);assert.equal(after.ledger.reservations.at(-1).namespace,'simulation');assert.equal(virtualCalls,1);
- const proof={kind:'BUDGET_MOCK_PROOF',runId:process.env.GITHUB_RUN_ID,priorReservations:before.ledger.reservations.length,priorHead:before.head,reservedCommit:grant.head,readbackCommit:after.head,readbackHash:after.ledger.integrity,revision:after.ledger.revision,virtualCalls,duplicateBlocked:true,realRequests:{FMP:0,FRED:0},realPublication:'DISABLED'};
+ const proof={kind:'BUDGET_MOCK_PROOF',runId:process.env.GITHUB_RUN_ID,priorReservations:before.ledger.reservations.length,priorHead:before.head,reservedCommit:grant.head,readbackCommit:after.head,readbackHash:after.ledger.integrity,revision:after.ledger.revision,virtualCalls,duplicateBlocked:true,realRequests:{FMP:0,FRED:0},realPublication:process.env.ALLOW_REAL_MARKET_PUBLICATION};
  console.log(JSON.stringify(proof,null,2));if(process.env.GITHUB_STEP_SUMMARY)await fs.appendFile(process.env.GITHUB_STEP_SUMMARY,'## Git budget Mock proof\n```json\n'+JSON.stringify(proof,null,2)+'\n```\n');
 }
 function classifyGitError(e,context={}){
