@@ -2,10 +2,10 @@
   "version": 1,
   "kind": "SANITIZED_BUDGET_LEDGER",
   "containsMarketData": false,
-  "revision": 1,
-  "previousHash": "672077112a2556abcb84608cae292413fa3f2be41f53f5eacaef87e4fbd26b08",
+  "revision": 2,
+  "previousHash": "335e33bd3480697e9bb9ae694a1c4df20d6e4c824a7c94d0622556dd80253fe2",
   "createdAt": "2026-10-16T11:38:29.773Z",
-  "updatedAt": "2026-10-16T11:40:09.392Z",
+  "updatedAt": "2026-10-16T11:40:49.771Z",
   "policy": {
     "projectRollingHours": 24,
     "projectFmpLimit": 20,
@@ -40,7 +40,25 @@
         "coversFrom": "2026-10-14T11:40:09.392Z"
       },
       "periodStart": "2026-10-15T20:00:00.000Z"
+    },
+    {
+      "id": "transport-B-20261016",
+      "namespace": "simulation",
+      "at": "2026-10-16T11:40:49.771Z",
+      "targetDate": "2026-10-15",
+      "cost": {
+        "fmp": 1,
+        "fred": 0
+      },
+      "external": {
+        "known": true,
+        "fmp": 0,
+        "fred": 0,
+        "observedAt": "2026-10-16T11:40:49.771Z",
+        "coversFrom": "2026-10-14T11:40:49.771Z"
+      },
+      "periodStart": "2026-10-15T20:00:00.000Z"
     }
   ],
-  "integrity": "335e33bd3480697e9bb9ae694a1c4df20d6e4c824a7c94d0622556dd80253fe2"
+  "integrity": "534263b117d94f770fea7306657301f9dc675df7da3252fb628650125b332072"
 }
