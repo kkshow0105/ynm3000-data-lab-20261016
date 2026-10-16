@@ -2,13 +2,15 @@
 // Cloud-only publisher: the only writable paths are an immutable white-list release and its pointer.
 const {createHash}=require('node:crypto');
 const {checkBundle}=require('./public-market-data');
+const {checkIndustryBundle}=require('./market-taxonomy');
 const hash=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const REPO='kkshow0105/ynm3000-data-lab-20261016';
 function prepare({bundle,previous=null,kind='SYNTHETIC_TEST_ONLY',allowReal=false,now=new Date()}){
  if(!['SYNTHETIC_TEST_ONLY','REAL_MARKET_DATA'].includes(kind)||kind==='REAL_MARKET_DATA'&&!allowReal)throw Error('Real publication is disabled until final user confirmation');
+ checkIndustryBundle(bundle);
  const checked=checkBundle(bundle,now);
  for(const date of checked.dates)for(const r of bundle['snapshots/'+date+'.json'].indices){const previous=bundle['snapshots/'+r.previousDate+'.json']?.indices.find(v=>v.symbol===r.symbol);if(previous&&previous.close!==r.previousClose)throw Error('相邻快照收盘价不一致');}
- if(previous){const old=checkBundle(previous,now);for(const date of old.dates)if(!checked.dates.includes(date)||JSON.stringify(previous['snapshots/'+date+'.json'])!==JSON.stringify(bundle['snapshots/'+date+'.json']))throw Error('Publication must preserve every existing historical snapshot');for(const name of ['sox.json','nbi.json'])for(const row of previous[name].observations){const fresh=bundle[name].observations.find(r=>r.date===row.date);if(!fresh||fresh.close!==row.close)throw Error('Existing index history cannot be removed or revised silently');}}
+ if(previous){checkIndustryBundle(previous);const old=checkBundle(previous,now);for(const date of old.dates)if(!checked.dates.includes(date)||JSON.stringify(previous['snapshots/'+date+'.json'])!==JSON.stringify(bundle['snapshots/'+date+'.json']))throw Error('Publication must preserve every existing historical snapshot');for(const name of ['sox.json','nbi.json'])for(const row of previous[name].observations){const fresh=bundle[name].observations.find(r=>r.date===row.date);if(!fresh||fresh.close!==row.close)throw Error('Existing index history cannot be removed or revised silently');}}
  const prefix=kind==='REAL_MARKET_DATA'?'market/v1':'lab/publishing/v1';
  const ordered=Object.fromEntries(Object.keys(bundle).sort().map(k=>[k,bundle[k]])),release=hash({kind,bundle:ordered});
  const pointer={version:1,kind,release,latest:checked.latest,publishedAt:now.toISOString(),manifestHash:hash(bundle['manifest.json'])};

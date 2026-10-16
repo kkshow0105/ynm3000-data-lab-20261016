@@ -1,5 +1,5 @@
-# Install this file ONLY in the independent data repository as .github/workflows/update-market.yml.
-name: Update market closes (manual; real publication locked)
+# Manual integration: Git budget is durable; Mock publishes only in memory.
+name: Update market closes (Git budget; real publication locked)
 on:
   workflow_dispatch:
     inputs:
@@ -7,22 +7,25 @@ on:
         type: choice
         options: [simulation, real]
         default: simulation
-        description: Simulation is isolated; real needs final user confirmation
+        description: Mock integration only until real publication is separately authorized
       target_date:
         type: string
         default: ''
-        description: Completed US trading date; blank selects latest eligible close
-      simulate_incomplete:
-        type: boolean
-        default: false
-        description: Simulation only - prove previous version survives source delay
+        description: Completed US trading date; real mode only
       external_fmp_calls:
         type: string
-        default: '0'
-        description: Known FMP calls today outside this workflow (include earlier experiments)
+        default: ''
+        description: Confirm all FMP calls in past 48h outside real Git ledger, including old experiments
+      external_fred_calls:
+        type: string
+        default: ''
+        description: Confirm all FRED calls in past 48h outside real Git ledger
+      confirm_external_calls:
+        type: boolean
+        default: false
+        description: Real mode only - confirm these external counts are complete
 permissions:
   contents: write
-  actions: read
 concurrency:
   group: market-data-publication
   cancel-in-progress: false
@@ -36,41 +39,28 @@ jobs:
       MARKET_MODE: ${{ inputs.mode }}
       TARGET_DATE: ${{ inputs.target_date }}
       EXTERNAL_FMP_CALLS: ${{ inputs.external_fmp_calls }}
-      SIMULATE_INCOMPLETE: ${{ inputs.simulate_incomplete }}
+      EXTERNAL_FRED_CALLS: ${{ inputs.external_fred_calls }}
+      CONFIRM_EXTERNAL_CALLS: ${{ inputs.confirm_external_calls }}
       ALLOW_REAL_MARKET_PUBLICATION: ${{ vars.ALLOW_REAL_MARKET_PUBLICATION }}
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: main
           persist-credentials: false
       - name: Mock safety tests (no market requests)
-        run: node --test tests/market-publish.test.js tests/market-remote-core.test.js
-      - name: Prepare and validate quota
+        run: node --test tests/*.test.js
+      - name: Mock integrated collection recovery and publication in memory
+        if: inputs.mode == 'simulation'
+        run: node scripts/market-integration-lab.js
+      - name: Persist Git reservation and verify remote readback before collection
+        if: inputs.mode == 'real'
         id: prepare
         run: node scripts/market-cloud.js prepare
-      - name: Persist reservation before collection
-        if: steps.prepare.outputs.should_run == 'true'
-        id: quota
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: quota-${{ inputs.mode }}-${{ steps.prepare.outputs.day }}-${{ github.run_id }}-reserved
-          path: ${{ runner.temp }}/market-update/quota/quota.json
-          if-no-files-found: error
-          retention-days: 90
       - name: Collect validate and publish atomically
-        if: steps.prepare.outputs.should_run == 'true'
+        if: inputs.mode == 'real' && steps.prepare.outputs.should_run == 'true'
         run: node scripts/market-cloud.js collect
         env:
-          RESERVATION_ARTIFACT_ID: ${{ steps.quota.outputs.artifact-id }}
           FMP_API_KEY: ${{ inputs.mode == 'real' && secrets.FMP_API_KEY || '' }}
-      - name: Persist final counters without private data
-        if: always() && steps.quota.outcome == 'success'
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        with:
-          name: quota-${{ inputs.mode }}-${{ steps.prepare.outputs.day }}-${{ github.run_id }}-final
-          path: ${{ runner.temp }}/market-update/quota/quota.json
-          if-no-files-found: error
-          retention-days: 90
-      - name: Remove temporary responses and counters
+      - name: Remove temporary responses and grants
         if: always()
         run: node -e "const fs=require('node:fs'),p=require('node:path');if(!process.env.RUNNER_TEMP)process.exit(1);fs.rmSync(p.join(process.env.RUNNER_TEMP,'market-update'),{recursive:true,force:true});"
