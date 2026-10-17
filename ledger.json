@@ -2,10 +2,10 @@
   "version": 1,
   "kind": "SANITIZED_BUDGET_LEDGER",
   "containsMarketData": false,
-  "revision": 14,
-  "previousHash": "9c8b59b45f0e3b86296044bd4ff2d083c184d11f010d7d8b2fd375e57ceaf144",
+  "revision": 15,
+  "previousHash": "0e54f540b3bf038d104c9444e20b0983b75ba2bee7ffa6766f970b57c39191c4",
   "createdAt": "2026-10-16T11:38:29.773Z",
-  "updatedAt": "2026-10-16T13:30:37.059Z",
+  "updatedAt": "2026-10-17T00:27:36.947Z",
   "policy": {
     "projectRollingHours": 24,
     "projectFmpLimit": 20,
@@ -274,7 +274,44 @@
         "coversFrom": "2026-10-14T13:30:37.059Z"
       },
       "periodStart": "2026-10-15T20:00:00.000Z"
+    },
+    {
+      "id": "market-real-38986449039",
+      "namespace": "real",
+      "at": "2026-10-17T00:27:36.947Z",
+      "targetDate": "2026-10-15",
+      "cost": {
+        "fmp": 6,
+        "fred": 2
+      },
+      "external": {
+        "known": true,
+        "fmp": 0,
+        "fred": 0,
+        "observedAt": "2026-10-17T00:27:36.947Z",
+        "coversFrom": "2026-10-17T00:18:00.000Z"
+      },
+      "periodStart": "2026-10-17T00:18:00.000Z",
+      "credit": {
+        "mode": "VERIFIED_REMAINING",
+        "evidence": {
+          "version": 1,
+          "source": "USER_VERIFIED_FMP_DASHBOARD",
+          "observedAt": "2026-10-17T00:18:00.000Z",
+          "used": 0,
+          "remaining": 250,
+          "accountedThroughRevision": 14,
+          "verified": true,
+          "id": "ffad5c22505da72f30014d7593af908963549e2481ae76ad63c22ba68381e5ab"
+        },
+        "checkpoint": {
+          "revision": 14,
+          "reservationsHash": "98290521c62f2b9609f308661601e8d302fab5ae7390109445c02b6de88c4139"
+        },
+        "remainingBefore": 250,
+        "remainingAfter": 244
+      }
     }
   ],
-  "integrity": "0e54f540b3bf038d104c9444e20b0983b75ba2bee7ffa6766f970b57c39191c4"
+  "integrity": "323c1bd07ed2c58b791fa96b3b25a25b7908c80d992f323fafdf4106c99cec9e"
 }
