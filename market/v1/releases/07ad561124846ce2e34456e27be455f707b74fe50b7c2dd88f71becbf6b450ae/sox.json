@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "source": "Nasdaq via FRED",
+  "series": "NASDAQSOX",
+  "sourceUrl": "https://fred.stlouisfed.org/series/NASDAQSOX",
+  "copyright": "Copyright © 2025, NASDAQ, Inc.",
+  "fetchedAt": "2026-10-17T00:27:41.893Z",
+  "observations": [
+    {
+      "date": "2026-10-01",
+      "close": 12829,
+      "fetchedAt": "2026-10-15T06:56:26.864Z"
+    },
+    {
+      "date": "2026-10-02",
+      "close": 13136.67,
+      "fetchedAt": "2026-10-15T06:56:26.864Z"
+    },
+    {
+      "date": "2026-10-05",
+      "close": 13172.74,
+      "fetchedAt": "2026-10-15T06:56:26.864Z"
+    },
+    {
+      "date": "2026-10-06",
+      "close": 13217.82,
+      "fetchedAt": "2026-10-15T06:56:26.864Z"
+    },
+    {
+      "date": "2026-10-07",
+      "close": 13066.15,
+      "fetchedAt": "2026-10-15T06:56:26.864Z"
+    },
+    {
+      "date": "2026-10-08",
+      "close": 12623.71,
+      "fetchedAt": "2026-10-15T06:56:26.864Z"
+    },
+    {
+      "date": "2026-10-09",
+      "close": 12572.42,
+      "fetchedAt": "2026-10-15T06:56:26.864Z"
+    },
+    {
+      "date": "2026-10-12",
+      "close": 12236.79,
+      "fetchedAt": "2026-10-15T06:56:26.864Z"
+    },
+    {
+      "date": "2026-10-13",
+      "close": 12208.79,
+      "fetchedAt": "2026-10-15T06:56:26.864Z"
+    },
+    {
+      "date": "2026-10-14",
+      "close": 11684.38,
+      "fetchedAt": "2026-10-15T06:56:26.864Z"
+    },
+    {
+      "date": "2026-10-15",
+      "close": 11581.22,
+      "fetchedAt": "2026-10-17T00:27:41.893Z"
+    }
+  ]
+}

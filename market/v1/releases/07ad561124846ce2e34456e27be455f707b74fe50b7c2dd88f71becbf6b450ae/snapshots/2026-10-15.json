@@ -1,0 +1,1423 @@
+{
+  "version": 1,
+  "tradingDate": "2026-10-15",
+  "updatedAt": "2026-10-17T00:27:47.276Z",
+  "source": "FMP",
+  "isProxy": false,
+  "calculation": {
+    "industry": "FMP交易所行业平均涨跌幅",
+    "index": "(收盘价 / 上一有效交易日收盘价 - 1) × 100",
+    "scope": "NASDAQ + NYSE交易所行业记录排行"
+  },
+  "datasets": {
+    "sector": [
+      {
+        "name": "Basic Materials",
+        "exchange": "NASDAQ",
+        "change": -0.5959577908664526
+      },
+      {
+        "name": "Communication Services",
+        "exchange": "NASDAQ",
+        "change": 1.3753884077429834
+      },
+      {
+        "name": "Consumer Cyclical",
+        "exchange": "NASDAQ",
+        "change": 1.3140512169277363
+      },
+      {
+        "name": "Consumer Defensive",
+        "exchange": "NASDAQ",
+        "change": -1.9452845861100299
+      },
+      {
+        "name": "Energy",
+        "exchange": "NASDAQ",
+        "change": -0.7259980519000897
+      },
+      {
+        "name": "Financial Services",
+        "exchange": "NASDAQ",
+        "change": 2.112067055176259
+      },
+      {
+        "name": "Healthcare",
+        "exchange": "NASDAQ",
+        "change": 0.468301741346111
+      },
+      {
+        "name": "Industrials",
+        "exchange": "NASDAQ",
+        "change": 1.317649100125129
+      },
+      {
+        "name": "Real Estate",
+        "exchange": "NASDAQ",
+        "change": 0.6023821244578009
+      },
+      {
+        "name": "Technology",
+        "exchange": "NASDAQ",
+        "change": 1.8968613540767398
+      },
+      {
+        "name": "Utilities",
+        "exchange": "NASDAQ",
+        "change": -0.7772874760343274
+      },
+      {
+        "name": "Basic Materials",
+        "exchange": "NYSE",
+        "change": 1.4951143449072335
+      },
+      {
+        "name": "Communication Services",
+        "exchange": "NYSE",
+        "change": 1.879511462962813
+      },
+      {
+        "name": "Consumer Cyclical",
+        "exchange": "NYSE",
+        "change": 1.6200043063655079
+      },
+      {
+        "name": "Consumer Defensive",
+        "exchange": "NYSE",
+        "change": -1.4792930997021947
+      },
+      {
+        "name": "Energy",
+        "exchange": "NYSE",
+        "change": -1.7023111503951305
+      },
+      {
+        "name": "Financial Services",
+        "exchange": "NYSE",
+        "change": -0.9567938559009725
+      },
+      {
+        "name": "Healthcare",
+        "exchange": "NYSE",
+        "change": 0.811553846537949
+      },
+      {
+        "name": "Industrials",
+        "exchange": "NYSE",
+        "change": 0.7131912592604595
+      },
+      {
+        "name": "Real Estate",
+        "exchange": "NYSE",
+        "change": -0.20984471083935752
+      },
+      {
+        "name": "Technology",
+        "exchange": "NYSE",
+        "change": 1.9577050726097056
+      },
+      {
+        "name": "Utilities",
+        "exchange": "NYSE",
+        "change": -0.8508031286891482
+      }
+    ],
+    "industry": [
+      {
+        "name": "Advertising Agencies",
+        "exchange": "NASDAQ",
+        "change": 3.537392081407975
+      },
+      {
+        "name": "Aerospace & Defense",
+        "exchange": "NASDAQ",
+        "change": 1.5526327263868378
+      },
+      {
+        "name": "Agricultural Farm Products",
+        "exchange": "NASDAQ",
+        "change": -1.4012795960709923
+      },
+      {
+        "name": "Agricultural Inputs",
+        "exchange": "NASDAQ",
+        "change": -5.494638882370562
+      },
+      {
+        "name": "Agricultural - Machinery",
+        "exchange": "NASDAQ",
+        "change": 0.33419392058593456
+      },
+      {
+        "name": "Airlines, Airports & Air Services",
+        "exchange": "NASDAQ",
+        "change": 1.9290758890751603
+      },
+      {
+        "name": "Apparel - Footwear & Accessories",
+        "exchange": "NASDAQ",
+        "change": 2.326661839952049
+      },
+      {
+        "name": "Apparel - Manufacturers",
+        "exchange": "NASDAQ",
+        "change": 2.5838378758868297
+      },
+      {
+        "name": "Apparel - Retail",
+        "exchange": "NASDAQ",
+        "change": 0.3919294420878128
+      },
+      {
+        "name": "Auto - Dealerships",
+        "exchange": "NASDAQ",
+        "change": 1.2831498855807366
+      },
+      {
+        "name": "Auto - Manufacturers",
+        "exchange": "NASDAQ",
+        "change": 0.5168596190234354
+      },
+      {
+        "name": "Auto - Parts",
+        "exchange": "NASDAQ",
+        "change": 0.7304998734456447
+      },
+      {
+        "name": "Auto - Recreational Vehicles",
+        "exchange": "NASDAQ",
+        "change": 5.615591864202796
+      },
+      {
+        "name": "Banks",
+        "exchange": "NASDAQ",
+        "change": 0.7864726700747227
+      },
+      {
+        "name": "Banks - Regional",
+        "exchange": "NASDAQ",
+        "change": 1.6111397744950517
+      },
+      {
+        "name": "Beverages - Non-Alcoholic",
+        "exchange": "NASDAQ",
+        "change": -1.3687991449426784
+      },
+      {
+        "name": "Beverages - Wineries & Distilleries",
+        "exchange": "NASDAQ",
+        "change": 1.572350530128186
+      },
+      {
+        "name": "Biotechnology",
+        "exchange": "NASDAQ",
+        "change": 0.26727434401714323
+      },
+      {
+        "name": "Broadcasting",
+        "exchange": "NASDAQ",
+        "change": 2.0855104773411792
+      },
+      {
+        "name": "Business Equipment & Supplies",
+        "exchange": "NASDAQ",
+        "change": 0.18552333014782985
+      },
+      {
+        "name": "Chemicals",
+        "exchange": "NASDAQ",
+        "change": 0.6218307009765001
+      },
+      {
+        "name": "Chemicals - Specialty",
+        "exchange": "NASDAQ",
+        "change": -0.721751091108136
+      },
+      {
+        "name": "Coal",
+        "exchange": "NASDAQ",
+        "change": 0.6718581403143631
+      },
+      {
+        "name": "Communication Equipment",
+        "exchange": "NASDAQ",
+        "change": 0.9036906706358483
+      },
+      {
+        "name": "Computer Hardware",
+        "exchange": "NASDAQ",
+        "change": 4.656391359631251
+      },
+      {
+        "name": "Conglomerates",
+        "exchange": "NASDAQ",
+        "change": 0.7447535439053521
+      },
+      {
+        "name": "Construction Materials",
+        "exchange": "NASDAQ",
+        "change": 0.8171710839214308
+      },
+      {
+        "name": "Consulting Services",
+        "exchange": "NASDAQ",
+        "change": -0.4475450818221427
+      },
+      {
+        "name": "Consumer Electronics",
+        "exchange": "NASDAQ",
+        "change": -1.4266556288574206
+      },
+      {
+        "name": "Discount Stores",
+        "exchange": "NASDAQ",
+        "change": -2.0236873035881286
+      },
+      {
+        "name": "Drug Manufacturers - General",
+        "exchange": "NASDAQ",
+        "change": -0.1724335126590204
+      },
+      {
+        "name": "Drug Manufacturers - Specialty & Generic",
+        "exchange": "NASDAQ",
+        "change": 0.788613720141984
+      },
+      {
+        "name": "Education & Training Services",
+        "exchange": "NASDAQ",
+        "change": -0.20717953331536032
+      },
+      {
+        "name": "Electrical Equipment & Parts",
+        "exchange": "NASDAQ",
+        "change": 3.500216814430912
+      },
+      {
+        "name": "Electronic Gaming & Multimedia",
+        "exchange": "NASDAQ",
+        "change": 2.434836921345074
+      },
+      {
+        "name": "Engineering & Construction",
+        "exchange": "NASDAQ",
+        "change": 0.9220060703106547
+      },
+      {
+        "name": "Entertainment",
+        "exchange": "NASDAQ",
+        "change": 1.301457147383056
+      },
+      {
+        "name": "Financial - Capital Markets",
+        "exchange": "NASDAQ",
+        "change": 3.8028519917776338
+      },
+      {
+        "name": "Financial - Conglomerates",
+        "exchange": "NASDAQ",
+        "change": 2.7639819081493266
+      },
+      {
+        "name": "Financial - Credit Services",
+        "exchange": "NASDAQ",
+        "change": 3.4194305658438173
+      },
+      {
+        "name": "Financial - Data & Stock Exchanges",
+        "exchange": "NASDAQ",
+        "change": 2.1683560129620583
+      },
+      {
+        "name": "Financial - Mortgages",
+        "exchange": "NASDAQ",
+        "change": 33.4348439543908
+      },
+      {
+        "name": "Food Confectioners",
+        "exchange": "NASDAQ",
+        "change": -1.6386173171694218
+      },
+      {
+        "name": "Food Distribution",
+        "exchange": "NASDAQ",
+        "change": 1.0437543643978087
+      },
+      {
+        "name": "Furnishings, Fixtures & Appliances",
+        "exchange": "NASDAQ",
+        "change": 2.9075830367440547
+      },
+      {
+        "name": "Gambling, Resorts & Casinos",
+        "exchange": "NASDAQ",
+        "change": 2.1455371161732684
+      },
+      {
+        "name": "Gold",
+        "exchange": "NASDAQ",
+        "change": 2.0708177493635738
+      },
+      {
+        "name": "Grocery Stores",
+        "exchange": "NASDAQ",
+        "change": 0.6536853097727002
+      },
+      {
+        "name": "Hardware, Equipment & Parts",
+        "exchange": "NASDAQ",
+        "change": 0.7406825136844208
+      },
+      {
+        "name": "Home Improvement",
+        "exchange": "NASDAQ",
+        "change": -3.3569978016335877
+      },
+      {
+        "name": "Household & Personal Products",
+        "exchange": "NASDAQ",
+        "change": 1.2962158651754985
+      },
+      {
+        "name": "Independent Power Producers",
+        "exchange": "NASDAQ",
+        "change": 0.07964337788493037
+      },
+      {
+        "name": "Industrial - Distribution",
+        "exchange": "NASDAQ",
+        "change": 0.09099314812790471
+      },
+      {
+        "name": "Industrial - Machinery",
+        "exchange": "NASDAQ",
+        "change": 0.2653958054934735
+      },
+      {
+        "name": "Industrial Materials",
+        "exchange": "NASDAQ",
+        "change": 6.63461698607235
+      },
+      {
+        "name": "Industrial - Pollution & Treatment Controls",
+        "exchange": "NASDAQ",
+        "change": -0.26296398357249506
+      },
+      {
+        "name": "Information Technology Services",
+        "exchange": "NASDAQ",
+        "change": 1.8367397784398776
+      },
+      {
+        "name": "Insurance - Brokers",
+        "exchange": "NASDAQ",
+        "change": 2.2715175934429066
+      },
+      {
+        "name": "Insurance - Diversified",
+        "exchange": "NASDAQ",
+        "change": -0.33728756898835366
+      },
+      {
+        "name": "Insurance - Life",
+        "exchange": "NASDAQ",
+        "change": 0.37060460002888984
+      },
+      {
+        "name": "Insurance - Property & Casualty",
+        "exchange": "NASDAQ",
+        "change": -0.48897280163449075
+      },
+      {
+        "name": "Insurance - Reinsurance",
+        "exchange": "NASDAQ",
+        "change": -3.024996381607592
+      },
+      {
+        "name": "Insurance - Specialty",
+        "exchange": "NASDAQ",
+        "change": -0.788914930533946
+      },
+      {
+        "name": "Integrated Freight & Logistics",
+        "exchange": "NASDAQ",
+        "change": 1.6405204613620716
+      },
+      {
+        "name": "Internet Content & Information",
+        "exchange": "NASDAQ",
+        "change": 1.4088805324874887
+      },
+      {
+        "name": "Investment - Banking & Investment Services",
+        "exchange": "NASDAQ",
+        "change": 3.9571570645525744
+      },
+      {
+        "name": "Leisure",
+        "exchange": "NASDAQ",
+        "change": 1.7206387853989868
+      },
+      {
+        "name": "Manufacturing - Metal Fabrication",
+        "exchange": "NASDAQ",
+        "change": 5.978399361825781
+      },
+      {
+        "name": "Manufacturing - Textiles",
+        "exchange": "NASDAQ",
+        "change": 1.343049771004745
+      },
+      {
+        "name": "Manufacturing - Tools & Accessories",
+        "exchange": "NASDAQ",
+        "change": 0.14821038285104393
+      },
+      {
+        "name": "Marine Shipping",
+        "exchange": "NASDAQ",
+        "change": -0.7494613059271127
+      },
+      {
+        "name": "Medical - Care Facilities",
+        "exchange": "NASDAQ",
+        "change": -0.04140250231532416
+      },
+      {
+        "name": "Medical - Devices",
+        "exchange": "NASDAQ",
+        "change": 2.0792576981928157
+      },
+      {
+        "name": "Medical - Diagnostics & Research",
+        "exchange": "NASDAQ",
+        "change": 2.0546642465654186
+      },
+      {
+        "name": "Medical - Distribution",
+        "exchange": "NASDAQ",
+        "change": 0.28477257859009786
+      },
+      {
+        "name": "Medical - Equipment & Services",
+        "exchange": "NASDAQ",
+        "change": 8.43373493975903
+      },
+      {
+        "name": "Medical - Healthcare Information Services",
+        "exchange": "NASDAQ",
+        "change": 3.4692526736880946
+      },
+      {
+        "name": "Medical - Healthcare Plans",
+        "exchange": "NASDAQ",
+        "change": -1.1177433056346664
+      },
+      {
+        "name": "Medical - Instruments & Supplies",
+        "exchange": "NASDAQ",
+        "change": 0.6309115932705556
+      },
+      {
+        "name": "Medical - Pharmaceuticals",
+        "exchange": "NASDAQ",
+        "change": -1.0574676076548495
+      },
+      {
+        "name": "Medical - Specialties",
+        "exchange": "NASDAQ",
+        "change": 1.8787762448861933
+      },
+      {
+        "name": "Oil & Gas Equipment & Services",
+        "exchange": "NASDAQ",
+        "change": -1.194356256381346
+      },
+      {
+        "name": "Oil & Gas Exploration & Production",
+        "exchange": "NASDAQ",
+        "change": -1.49970905178185
+      },
+      {
+        "name": "Oil & Gas Integrated",
+        "exchange": "NASDAQ",
+        "change": 0.18066447440812095
+      },
+      {
+        "name": "Oil & Gas Midstream",
+        "exchange": "NASDAQ",
+        "change": -0.8215173569745549
+      },
+      {
+        "name": "Oil & Gas Refining & Marketing",
+        "exchange": "NASDAQ",
+        "change": 0.7649259432567002
+      },
+      {
+        "name": "Other Precious Metals",
+        "exchange": "NASDAQ",
+        "change": 2.9515239806298332
+      },
+      {
+        "name": "Packaged Foods",
+        "exchange": "NASDAQ",
+        "change": -1.4239567226906225
+      },
+      {
+        "name": "Packaging & Containers",
+        "exchange": "NASDAQ",
+        "change": 0.678262800110363
+      },
+      {
+        "name": "Paper, Lumber & Forest Products",
+        "exchange": "NASDAQ",
+        "change": 0.4150027744441731
+      },
+      {
+        "name": "Personal Products & Services",
+        "exchange": "NASDAQ",
+        "change": 0.4980468620142675
+      },
+      {
+        "name": "Publishing",
+        "exchange": "NASDAQ",
+        "change": 0.5820541407525637
+      },
+      {
+        "name": "Railroads",
+        "exchange": "NASDAQ",
+        "change": -0.021704301927105707
+      },
+      {
+        "name": "Real Estate - Development",
+        "exchange": "NASDAQ",
+        "change": 0.6342303730178411
+      },
+      {
+        "name": "Real Estate - Services",
+        "exchange": "NASDAQ",
+        "change": 3.0232884605501997
+      },
+      {
+        "name": "Regulated Electric",
+        "exchange": "NASDAQ",
+        "change": -2.468479084201136
+      },
+      {
+        "name": "Regulated Water",
+        "exchange": "NASDAQ",
+        "change": -1.4903027188703843
+      },
+      {
+        "name": "REIT - Diversified",
+        "exchange": "NASDAQ",
+        "change": -1.5484066982884848
+      },
+      {
+        "name": "REIT - Healthcare Facilities",
+        "exchange": "NASDAQ",
+        "change": -1.1345152855728569
+      },
+      {
+        "name": "REIT - Hotel & Motel",
+        "exchange": "NASDAQ",
+        "change": 2.8853995937069943
+      },
+      {
+        "name": "REIT - Industrial",
+        "exchange": "NASDAQ",
+        "change": 0.5190000302181197
+      },
+      {
+        "name": "REIT - Mortgage",
+        "exchange": "NASDAQ",
+        "change": 1.3573321323233634
+      },
+      {
+        "name": "REIT - Retail",
+        "exchange": "NASDAQ",
+        "change": -0.20399700521110953
+      },
+      {
+        "name": "REIT - Specialty",
+        "exchange": "NASDAQ",
+        "change": 0.5624152312707187
+      },
+      {
+        "name": "Renewable Utilities",
+        "exchange": "NASDAQ",
+        "change": 1.3129905242611928
+      },
+      {
+        "name": "Rental & Leasing Services",
+        "exchange": "NASDAQ",
+        "change": 1.6289467327362805
+      },
+      {
+        "name": "Residential Construction",
+        "exchange": "NASDAQ",
+        "change": 4.477718000328701
+      },
+      {
+        "name": "Restaurants",
+        "exchange": "NASDAQ",
+        "change": 1.9322862282610043
+      },
+      {
+        "name": "Security & Protection Services",
+        "exchange": "NASDAQ",
+        "change": 2.616060418955346
+      },
+      {
+        "name": "Semiconductors",
+        "exchange": "NASDAQ",
+        "change": 3.0860354017640423
+      },
+      {
+        "name": "Shell Companies",
+        "exchange": "NASDAQ",
+        "change": 0.2751877302053618
+      },
+      {
+        "name": "Software - Application",
+        "exchange": "NASDAQ",
+        "change": 4.178144162754016
+      },
+      {
+        "name": "Software - Infrastructure",
+        "exchange": "NASDAQ",
+        "change": 1.1070485910421368
+      },
+      {
+        "name": "Software - Services",
+        "exchange": "NASDAQ",
+        "change": 1.442013345344928
+      },
+      {
+        "name": "Solar",
+        "exchange": "NASDAQ",
+        "change": 2.0828319501152492
+      },
+      {
+        "name": "Specialty Business Services",
+        "exchange": "NASDAQ",
+        "change": 0.5436932408496187
+      },
+      {
+        "name": "Specialty Retail",
+        "exchange": "NASDAQ",
+        "change": 1.6253899900156688
+      },
+      {
+        "name": "Staffing & Employment Services",
+        "exchange": "NASDAQ",
+        "change": 0.4874773066493088
+      },
+      {
+        "name": "Steel",
+        "exchange": "NASDAQ",
+        "change": -1.0578573380284784
+      },
+      {
+        "name": "Technology Distributors",
+        "exchange": "NASDAQ",
+        "change": -0.4302137946147866
+      },
+      {
+        "name": "Telecommunications Services",
+        "exchange": "NASDAQ",
+        "change": -1.2220108044614153
+      },
+      {
+        "name": "Tobacco",
+        "exchange": "NASDAQ",
+        "change": -2.062752407894397
+      },
+      {
+        "name": "Travel Lodging",
+        "exchange": "NASDAQ",
+        "change": 2.5161653464090605
+      },
+      {
+        "name": "Travel Services",
+        "exchange": "NASDAQ",
+        "change": 2.8712847008836695
+      },
+      {
+        "name": "Trucking",
+        "exchange": "NASDAQ",
+        "change": 1.6540438132457869
+      },
+      {
+        "name": "Uranium",
+        "exchange": "NASDAQ",
+        "change": 1.0342284863154028
+      },
+      {
+        "name": "Waste Management",
+        "exchange": "NASDAQ",
+        "change": 4.400740597028152
+      },
+      {
+        "name": "Advertising Agencies",
+        "exchange": "NYSE",
+        "change": 1.8473389739543045
+      },
+      {
+        "name": "Aerospace & Defense",
+        "exchange": "NYSE",
+        "change": 0.43627713119107625
+      },
+      {
+        "name": "Agricultural Farm Products",
+        "exchange": "NYSE",
+        "change": -1.8898736586949072
+      },
+      {
+        "name": "Agricultural Inputs",
+        "exchange": "NYSE",
+        "change": -0.4454685510571932
+      },
+      {
+        "name": "Agricultural - Machinery",
+        "exchange": "NYSE",
+        "change": 0.7403035372952393
+      },
+      {
+        "name": "Airlines, Airports & Air Services",
+        "exchange": "NYSE",
+        "change": 2.362112385958026
+      },
+      {
+        "name": "Apparel - Footwear & Accessories",
+        "exchange": "NYSE",
+        "change": 2.525695517267046
+      },
+      {
+        "name": "Apparel - Manufacturers",
+        "exchange": "NYSE",
+        "change": 2.870554352176624
+      },
+      {
+        "name": "Apparel - Retail",
+        "exchange": "NYSE",
+        "change": -0.1225259555806768
+      },
+      {
+        "name": "Auto - Dealerships",
+        "exchange": "NYSE",
+        "change": 2.0843024564479284
+      },
+      {
+        "name": "Auto - Manufacturers",
+        "exchange": "NYSE",
+        "change": 0.6442887863281621
+      },
+      {
+        "name": "Auto - Parts",
+        "exchange": "NYSE",
+        "change": 1.0871425370971632
+      },
+      {
+        "name": "Auto - Recreational Vehicles",
+        "exchange": "NYSE",
+        "change": 4.659046135815759
+      },
+      {
+        "name": "Banks - Diversified",
+        "exchange": "NYSE",
+        "change": 0.0790773397072897
+      },
+      {
+        "name": "Banks - Regional",
+        "exchange": "NYSE",
+        "change": 1.24389792488806
+      },
+      {
+        "name": "Beverages - Alcoholic",
+        "exchange": "NYSE",
+        "change": 0.1054294133026934
+      },
+      {
+        "name": "Beverages - Non-Alcoholic",
+        "exchange": "NYSE",
+        "change": -1.1203322923949544
+      },
+      {
+        "name": "Biotechnology",
+        "exchange": "NYSE",
+        "change": 2.035402833496369
+      },
+      {
+        "name": "Broadcasting",
+        "exchange": "NYSE",
+        "change": 2.8646738979150044
+      },
+      {
+        "name": "Chemicals",
+        "exchange": "NYSE",
+        "change": 1.8272866495362416
+      },
+      {
+        "name": "Chemicals - Specialty",
+        "exchange": "NYSE",
+        "change": 0.6794538315731069
+      },
+      {
+        "name": "Coal",
+        "exchange": "NYSE",
+        "change": -0.7305089544522914
+      },
+      {
+        "name": "Communication Equipment",
+        "exchange": "NYSE",
+        "change": 1.8851575980266766
+      },
+      {
+        "name": "Computer Hardware",
+        "exchange": "NYSE",
+        "change": 0.1057566953076794
+      },
+      {
+        "name": "Conglomerates",
+        "exchange": "NYSE",
+        "change": -0.479537447522993
+      },
+      {
+        "name": "Construction",
+        "exchange": "NYSE",
+        "change": 2.2556390977443774
+      },
+      {
+        "name": "Construction Materials",
+        "exchange": "NYSE",
+        "change": 1.467787003750276
+      },
+      {
+        "name": "Consulting Services",
+        "exchange": "NYSE",
+        "change": 4.688115161484974
+      },
+      {
+        "name": "Consumer Electronics",
+        "exchange": "NYSE",
+        "change": 0.20795607728480991
+      },
+      {
+        "name": "Copper",
+        "exchange": "NYSE",
+        "change": 3.436153097506578
+      },
+      {
+        "name": "Department Stores",
+        "exchange": "NYSE",
+        "change": -0.7575205602788682
+      },
+      {
+        "name": "Discount Stores",
+        "exchange": "NYSE",
+        "change": -0.26731330618851024
+      },
+      {
+        "name": "Diversified Utilities",
+        "exchange": "NYSE",
+        "change": -0.6383192520897363
+      },
+      {
+        "name": "Drug Manufacturers - General",
+        "exchange": "NYSE",
+        "change": 0.6841189585993668
+      },
+      {
+        "name": "Drug Manufacturers - Specialty & Generic",
+        "exchange": "NYSE",
+        "change": 0.5508934854365988
+      },
+      {
+        "name": "Education & Training Services",
+        "exchange": "NYSE",
+        "change": 0.26962428438046526
+      },
+      {
+        "name": "Electrical Equipment & Parts",
+        "exchange": "NYSE",
+        "change": 2.065007011038378
+      },
+      {
+        "name": "Electronic Gaming & Multimedia",
+        "exchange": "NYSE",
+        "change": 9.617895417610335
+      },
+      {
+        "name": "Engineering & Construction",
+        "exchange": "NYSE",
+        "change": 0.5220719840371757
+      },
+      {
+        "name": "Entertainment",
+        "exchange": "NYSE",
+        "change": 0.604279285867082
+      },
+      {
+        "name": "Financial - Capital Markets",
+        "exchange": "NYSE",
+        "change": 1.1715935965643354
+      },
+      {
+        "name": "Financial - Conglomerates",
+        "exchange": "NYSE",
+        "change": 1.3181505735246901
+      },
+      {
+        "name": "Financial - Credit Services",
+        "exchange": "NYSE",
+        "change": 0.9958424729597626
+      },
+      {
+        "name": "Financial - Data & Stock Exchanges",
+        "exchange": "NYSE",
+        "change": 2.46960177240918
+      },
+      {
+        "name": "Financial - Mortgages",
+        "exchange": "NYSE",
+        "change": 2.1037735102876765
+      },
+      {
+        "name": "Food Distribution",
+        "exchange": "NYSE",
+        "change": 0.6438684083967194
+      },
+      {
+        "name": "Furnishings, Fixtures & Appliances",
+        "exchange": "NYSE",
+        "change": 2.8485951364993767
+      },
+      {
+        "name": "Gambling, Resorts & Casinos",
+        "exchange": "NYSE",
+        "change": 2.321717105994092
+      },
+      {
+        "name": "Gold",
+        "exchange": "NYSE",
+        "change": 2.3795369879424877
+      },
+      {
+        "name": "Grocery Stores",
+        "exchange": "NYSE",
+        "change": -2.3466290305609427
+      },
+      {
+        "name": "Hardware, Equipment & Parts",
+        "exchange": "NYSE",
+        "change": 1.2772789191039413
+      },
+      {
+        "name": "Home Improvement",
+        "exchange": "NYSE",
+        "change": 0.8487441143517183
+      },
+      {
+        "name": "Household & Personal Products",
+        "exchange": "NYSE",
+        "change": -0.5076473037129214
+      },
+      {
+        "name": "Independent Power Producers",
+        "exchange": "NYSE",
+        "change": 3.7048332107040505
+      },
+      {
+        "name": "Industrial - Distribution",
+        "exchange": "NYSE",
+        "change": -0.19479394037231756
+      },
+      {
+        "name": "Industrial - Machinery",
+        "exchange": "NYSE",
+        "change": 0.8166287645175574
+      },
+      {
+        "name": "Industrial Materials",
+        "exchange": "NYSE",
+        "change": 1.83595516428956
+      },
+      {
+        "name": "Information Technology Services",
+        "exchange": "NYSE",
+        "change": 3.2017523563622197
+      },
+      {
+        "name": "Insurance - Brokers",
+        "exchange": "NYSE",
+        "change": 2.4067965190888385
+      },
+      {
+        "name": "Insurance - Diversified",
+        "exchange": "NYSE",
+        "change": -0.9607940802762394
+      },
+      {
+        "name": "Insurance - Life",
+        "exchange": "NYSE",
+        "change": -0.05225217559022832
+      },
+      {
+        "name": "Insurance - Property & Casualty",
+        "exchange": "NYSE",
+        "change": -0.49204706131222853
+      },
+      {
+        "name": "Insurance - Reinsurance",
+        "exchange": "NYSE",
+        "change": -0.16152020788070542
+      },
+      {
+        "name": "Insurance - Specialty",
+        "exchange": "NYSE",
+        "change": -0.5274920417832396
+      },
+      {
+        "name": "Integrated Freight & Logistics",
+        "exchange": "NYSE",
+        "change": 1.238257311730706
+      },
+      {
+        "name": "Internet Content & Information",
+        "exchange": "NYSE",
+        "change": 3.280544579417821
+      },
+      {
+        "name": "Investment - Banking & Investment Services",
+        "exchange": "NYSE",
+        "change": 1.7296228745867337
+      },
+      {
+        "name": "Leisure",
+        "exchange": "NYSE",
+        "change": 1.6195072332656046
+      },
+      {
+        "name": "Luxury Goods",
+        "exchange": "NYSE",
+        "change": 3.635997566446547
+      },
+      {
+        "name": "Manufacturing - Metal Fabrication",
+        "exchange": "NYSE",
+        "change": 1.882965285420224
+      },
+      {
+        "name": "Manufacturing - Tools & Accessories",
+        "exchange": "NYSE",
+        "change": 0.22802738722220717
+      },
+      {
+        "name": "Marine Shipping",
+        "exchange": "NYSE",
+        "change": 0.1238980943168988
+      },
+      {
+        "name": "Medical - Care Facilities",
+        "exchange": "NYSE",
+        "change": -0.6655387749986863
+      },
+      {
+        "name": "Medical - Devices",
+        "exchange": "NYSE",
+        "change": 0.9190477760268712
+      },
+      {
+        "name": "Medical - Diagnostics & Research",
+        "exchange": "NYSE",
+        "change": 1.3519218070581873
+      },
+      {
+        "name": "Medical - Distribution",
+        "exchange": "NYSE",
+        "change": 0.1882889726938508
+      },
+      {
+        "name": "Medical - Healthcare Information Services",
+        "exchange": "NYSE",
+        "change": 2.1851799074856793
+      },
+      {
+        "name": "Medical - Healthcare Plans",
+        "exchange": "NYSE",
+        "change": 1.744876846407295
+      },
+      {
+        "name": "Medical - Instruments & Supplies",
+        "exchange": "NYSE",
+        "change": 1.302551853564271
+      },
+      {
+        "name": "Oil & Gas Drilling",
+        "exchange": "NYSE",
+        "change": -0.5872895855953741
+      },
+      {
+        "name": "Oil & Gas Energy",
+        "exchange": "NYSE",
+        "change": 0.9384164222873803
+      },
+      {
+        "name": "Oil & Gas Equipment & Services",
+        "exchange": "NYSE",
+        "change": -0.5571367651202697
+      },
+      {
+        "name": "Oil & Gas Exploration & Production",
+        "exchange": "NYSE",
+        "change": -1.2390081229391559
+      },
+      {
+        "name": "Oil & Gas Integrated",
+        "exchange": "NYSE",
+        "change": -1.8164614308401994
+      },
+      {
+        "name": "Oil & Gas Midstream",
+        "exchange": "NYSE",
+        "change": -2.002534887566687
+      },
+      {
+        "name": "Oil & Gas Refining & Marketing",
+        "exchange": "NYSE",
+        "change": -1.7630866044243687
+      },
+      {
+        "name": "Other Precious Metals",
+        "exchange": "NYSE",
+        "change": 0.8688619446878043
+      },
+      {
+        "name": "Packaged Foods",
+        "exchange": "NYSE",
+        "change": -0.4365026761410373
+      },
+      {
+        "name": "Packaging & Containers",
+        "exchange": "NYSE",
+        "change": 0.4383526615554967
+      },
+      {
+        "name": "Paper, Lumber & Forest Products",
+        "exchange": "NYSE",
+        "change": 2.168621822151251
+      },
+      {
+        "name": "Personal Products & Services",
+        "exchange": "NYSE",
+        "change": 1.7076798701208595
+      },
+      {
+        "name": "Publishing",
+        "exchange": "NYSE",
+        "change": 1.3616191309493209
+      },
+      {
+        "name": "Railroads",
+        "exchange": "NYSE",
+        "change": -0.3362602361146272
+      },
+      {
+        "name": "Real Estate - Development",
+        "exchange": "NYSE",
+        "change": 0.7068825510512466
+      },
+      {
+        "name": "Real Estate - Diversified",
+        "exchange": "NYSE",
+        "change": 1.726618705035965
+      },
+      {
+        "name": "Real Estate - Services",
+        "exchange": "NYSE",
+        "change": 3.214037060123376
+      },
+      {
+        "name": "Regulated Electric",
+        "exchange": "NYSE",
+        "change": -1.430846785954032
+      },
+      {
+        "name": "Regulated Gas",
+        "exchange": "NYSE",
+        "change": -1.0571493211446237
+      },
+      {
+        "name": "Regulated Water",
+        "exchange": "NYSE",
+        "change": -0.9913461682214408
+      },
+      {
+        "name": "REIT - Diversified",
+        "exchange": "NYSE",
+        "change": 0.12525466334125657
+      },
+      {
+        "name": "REIT - Healthcare Facilities",
+        "exchange": "NYSE",
+        "change": -0.8334954537726924
+      },
+      {
+        "name": "REIT - Hotel & Motel",
+        "exchange": "NYSE",
+        "change": 2.0739734201952853
+      },
+      {
+        "name": "REIT - Industrial",
+        "exchange": "NYSE",
+        "change": -0.9450249361377838
+      },
+      {
+        "name": "REIT - Mortgage",
+        "exchange": "NYSE",
+        "change": -0.02446526692643225
+      },
+      {
+        "name": "REIT - Office",
+        "exchange": "NYSE",
+        "change": 1.3252518328264795
+      },
+      {
+        "name": "REIT - Residential",
+        "exchange": "NYSE",
+        "change": -0.8480710925478974
+      },
+      {
+        "name": "REIT - Retail",
+        "exchange": "NYSE",
+        "change": 0.4082043430249538
+      },
+      {
+        "name": "REIT - Specialty",
+        "exchange": "NYSE",
+        "change": 0.18784835030944969
+      },
+      {
+        "name": "Renewable Utilities",
+        "exchange": "NYSE",
+        "change": 2.1860549117558525
+      },
+      {
+        "name": "Rental & Leasing Services",
+        "exchange": "NYSE",
+        "change": 1.7630188377786293
+      },
+      {
+        "name": "Residential Construction",
+        "exchange": "NYSE",
+        "change": 2.2249221134983177
+      },
+      {
+        "name": "Restaurants",
+        "exchange": "NYSE",
+        "change": 0.2743212026546038
+      },
+      {
+        "name": "Security & Protection Services",
+        "exchange": "NYSE",
+        "change": 0.30623225999435455
+      },
+      {
+        "name": "Semiconductors",
+        "exchange": "NYSE",
+        "change": 1.7155543395585893
+      },
+      {
+        "name": "Shell Companies",
+        "exchange": "NYSE",
+        "change": 0.10668930904602636
+      },
+      {
+        "name": "Software - Application",
+        "exchange": "NYSE",
+        "change": 3.4598546051486156
+      },
+      {
+        "name": "Software - Infrastructure",
+        "exchange": "NYSE",
+        "change": 3.88117350345234
+      },
+      {
+        "name": "Solar",
+        "exchange": "NYSE",
+        "change": 1.955887447557858
+      },
+      {
+        "name": "Specialty Business Services",
+        "exchange": "NYSE",
+        "change": 0.9171959945659447
+      },
+      {
+        "name": "Specialty Retail",
+        "exchange": "NYSE",
+        "change": 2.5127814949050586
+      },
+      {
+        "name": "Staffing & Employment Services",
+        "exchange": "NYSE",
+        "change": 2.8095863981093983
+      },
+      {
+        "name": "Steel",
+        "exchange": "NYSE",
+        "change": -0.10828647052572027
+      },
+      {
+        "name": "Telecommunications Services",
+        "exchange": "NYSE",
+        "change": 0.01710912576513568
+      },
+      {
+        "name": "Tobacco",
+        "exchange": "NYSE",
+        "change": -3.754547981424483
+      },
+      {
+        "name": "Travel Lodging",
+        "exchange": "NYSE",
+        "change": 2.8335243456035553
+      },
+      {
+        "name": "Travel Services",
+        "exchange": "NYSE",
+        "change": 1.655021289095826
+      },
+      {
+        "name": "Trucking",
+        "exchange": "NYSE",
+        "change": 2.15612339090685
+      },
+      {
+        "name": "Waste Management",
+        "exchange": "NYSE",
+        "change": 1.2256412144051154
+      }
+    ]
+  },
+  "indices": [
+    {
+      "symbol": "^GSPC",
+      "name": "标普500",
+      "date": "2026-10-15",
+      "previousDate": "2026-10-14",
+      "close": 7744.06,
+      "previousClose": 7718.94,
+      "change": 0.3254332848811048
+    },
+    {
+      "symbol": "^IXIC",
+      "name": "纳斯达克综合",
+      "date": "2026-10-15",
+      "previousDate": "2026-10-14",
+      "close": 26713.03,
+      "previousClose": 26692.87,
+      "change": 0.07552578647407326
+    }
+  ]
+}
