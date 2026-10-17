@@ -15,15 +15,35 @@ on:
       external_fmp_calls:
         type: string
         default: ''
-        description: Confirm all FMP calls in past 48h outside real Git ledger, including old experiments
+        description: Cumulative outside-ledger FMP attempts since verified account evidence
       external_fred_calls:
         type: string
         default: ''
-        description: Confirm all FRED calls in past 48h outside real Git ledger
+        description: Cumulative outside-ledger FRED attempts since verified account evidence
       confirm_external_calls:
         type: boolean
         default: false
         description: Real mode only - confirm these external counts are complete
+      verified_account_at:
+        type: string
+        default: ''
+        description: Verified dashboard observation ISO UTC timestamp; never automatically refreshed
+      verified_account_used:
+        type: string
+        default: ''
+        description: Verified FMP calls used out of 250
+      verified_account_remaining:
+        type: string
+        default: ''
+        description: Verified FMP calls remaining out of 250
+      credit_checkpoint_revision:
+        type: string
+        default: ''
+        description: Ledger revision covered by this verified observation; preserve for repeated use
+      confirm_account_evidence:
+        type: boolean
+        default: false
+        description: Confirm fresh actual dashboard evidence and that it accounts for prior completed reservations
 permissions:
   contents: write
 concurrency:
@@ -41,6 +61,11 @@ jobs:
       EXTERNAL_FMP_CALLS: ${{ inputs.external_fmp_calls }}
       EXTERNAL_FRED_CALLS: ${{ inputs.external_fred_calls }}
       CONFIRM_EXTERNAL_CALLS: ${{ inputs.confirm_external_calls }}
+      VERIFIED_ACCOUNT_AT: ${{ inputs.verified_account_at }}
+      VERIFIED_ACCOUNT_USED: ${{ inputs.verified_account_used }}
+      VERIFIED_ACCOUNT_REMAINING: ${{ inputs.verified_account_remaining }}
+      CREDIT_CHECKPOINT_REVISION: ${{ inputs.credit_checkpoint_revision }}
+      CONFIRM_ACCOUNT_EVIDENCE: ${{ inputs.confirm_account_evidence }}
       ALLOW_REAL_MARKET_PUBLICATION: ${{ vars.ALLOW_REAL_MARKET_PUBLICATION }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1

@@ -1,6 +1,7 @@
 'use strict';
 // Git-only budget protocol. No market API, Raw CDN, artifact, or implicit initialization.
 const {createHash}=require('node:crypto');
+const {creditPlan,validateCreditRow}=require('./verified-credit');
 const {isDeepStrictEqual:equal}=require('node:util');
 const REPO='kkshow0105/ynm3000-data-lab-20261016',BRANCH='budget-ledger';
 const hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex');
@@ -19,9 +20,10 @@ function validateLedger(x){
  const p=x.policy;if(!keys(p,['projectRollingHours','projectFmpLimit','projectFredLimit','providerFmpDailyLimit','providerReset','simulationResetUtcHour'])||p.projectRollingHours!==24||p.projectFmpLimit!==20||p.projectFredLimit!==4||p.providerFmpDailyLimit!==250||p.simulationResetUtcHour!==20||!keys(p.providerReset,['status','utcHour'])||!['UNCONFIRMED','ACCOUNT_CONFIRMED_FIXED_UTC'].includes(p.providerReset.status)||(p.providerReset.status==='UNCONFIRMED'?p.providerReset.utcHour!==null:!integer(p.providerReset.utcHour,23)))throw stop('BUDGET_POLICY','配额策略缺失或不明');
  const k=x.knownExternal;if(!keys(k,['fmp','fred','at'])||!integer(k.fmp,250)||!integer(k.fred,100)||!iso(k.at))throw stop('BUDGET_EXTERNAL','已知外部基线损坏');
  const ids=new Set();let last=Date.parse(x.createdAt);
- for(const r of x.reservations){
-  if(!keys(r,['id','namespace','at','targetDate','cost','external','periodStart'])||typeof r.id!=='string'||!/^[-A-Za-z0-9:]{1,100}$/.test(r.id)||ids.has(r.id)||!['simulation','real'].includes(r.namespace)||!iso(r.at)||Date.parse(r.at)<last||Date.parse(r.at)>Date.parse(x.updatedAt)||!/^\d{4}-\d\d-\d\d$/.test(r.targetDate)||!keys(r.cost,['fmp','fred'])||!integer(r.cost.fmp,6)||!integer(r.cost.fred,2)||r.cost.fmp+r.cost.fred===0||!keys(r.external,['known','fmp','fred','observedAt','coversFrom'])||r.external.known!==true||!integer(r.external.fmp,250)||!integer(r.external.fred,100)||!iso(r.external.observedAt)||!iso(r.external.coversFrom)||!iso(r.periodStart))throw stop('BUDGET_RESERVATION','预算记录身份或字段错误');
+ for(const [index,r]of x.reservations.entries()){
+  if(!keys(r,['id','namespace','at','targetDate','cost','external','periodStart',...(Object.hasOwn(r,'credit')?['credit']:[])])||typeof r.id!=='string'||!/^[-A-Za-z0-9:]{1,100}$/.test(r.id)||ids.has(r.id)||!['simulation','real'].includes(r.namespace)||!iso(r.at)||Date.parse(r.at)<last||Date.parse(r.at)>Date.parse(x.updatedAt)||!/^\d{4}-\d\d-\d\d$/.test(r.targetDate)||!keys(r.cost,['fmp','fred'])||!integer(r.cost.fmp,6)||!integer(r.cost.fred,2)||r.cost.fmp+r.cost.fred===0||!keys(r.external,['known','fmp','fred','observedAt','coversFrom'])||r.external.known!==true||!integer(r.external.fmp,250)||!integer(r.external.fred,100)||!iso(r.external.observedAt)||!iso(r.external.coversFrom)||!iso(r.periodStart))throw stop('BUDGET_RESERVATION','预算记录身份或字段错误');
   if(r.namespace==='real'&&(r.cost.fmp!==6||r.cost.fred!==2))throw stop('BUDGET_RESERVATION','真实采集预留必须覆盖最大6+2请求');
+  if(Object.hasOwn(r,'credit'))validateCreditRow(x,r,index);
   ids.add(r.id);last=Date.parse(r.at);
  }
  if(x.revision!==x.reservations.length)throw stop('BUDGET_CHAIN','预算版本与预留数量不一致');return x;
@@ -31,6 +33,10 @@ function planReservation(ledger,request,now=new Date()){
  validateLedger(ledger);const ms=now.getTime();if(ms<Date.parse(ledger.updatedAt))throw stop('BUDGET_CLOCK','时钟落后于已持久化预算');
  if(ledger.reservations.some(r=>r.id===request.id))return {status:'duplicate',authorized:false};
  const {namespace,external,cost}=request;if(!['simulation','real'].includes(namespace))throw stop('BUDGET_NAMESPACE','预算范围错误');
+ if(request.credit){
+  const result=creditPlan(ledger,request,now),row={id:request.id,namespace,at:now.toISOString(),targetDate:request.targetDate,cost:{...cost},external:{...external},periodStart:request.credit.observedAt,credit:result.credit};
+  const candidate=seal({...ledger,revision:ledger.revision+1,previousHash:ledger.integrity,updatedAt:now.toISOString(),reservations:[...ledger.reservations,row]});validateLedger(candidate);return {status:'planned',candidate,row,expiresAt:result.expiresAt};
+ }
  const reset=ledger.policy.providerReset;if(namespace==='real'&&reset.status!=='ACCOUNT_CONFIRMED_FIXED_UTC')throw stop('BUDGET_RESET_UNCONFIRMED','供应商账户重置规则尚未确认');
  const window=period(now,namespace==='simulation'?ledger.policy.simulationResetUtcHour:reset.utcHour),rolling=ms-86400000,coverage=Math.min(rolling,window.start);
  if(!external||external.known!==true||!integer(external.fmp,250)||!integer(external.fred,100)||!iso(external.observedAt)||Math.abs(ms-Date.parse(external.observedAt))>300000||!iso(external.coversFrom)||Date.parse(external.coversFrom)>coverage)throw stop('BUDGET_EXTERNAL_UNKNOWN','外部消耗未知、未覆盖额度窗口或确认已过期');

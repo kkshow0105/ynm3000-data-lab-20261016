@@ -5,7 +5,8 @@ const core=require('../tools/us-market/market-core'),{collect,atomicJson}=requir
 const {publish,githubStore,REPO,hash}=require('./publish-market-data'),{sourceFetch}=require('./market-simulation');
 const {createGitBudgetStore,reserveAndVerify,verifyGrant,stop}=require('./git-budget-ledger');
 const {checkIndustrySnapshot,checkIndustryBundle,coverageDiagnostic}=require('./market-taxonomy');
-function reportFailure(e){const taxonomy=coverageDiagnostic(e);if(taxonomy)console.error(taxonomy);else if(/^BUDGET_/.test(e?.code||''))console.error(JSON.stringify({code:e.code,phase:e.phase,message:e.message}));}
+function reportFailure(e){if(e?.sourceRequests)console.error(JSON.stringify({sourceRequests:e.sourceRequests}));const taxonomy=coverageDiagnostic(e);if(taxonomy)console.error(taxonomy);else if(/^BUDGET_/.test(e?.code||''))console.error(JSON.stringify({code:e.code,phase:e.phase,message:e.message}));}
+const {makeEvidence}=require('./verified-credit');
 const MODE=()=>process.env.MARKET_MODE||'simulation';
 function gate(mode,flag){if(!['simulation','real'].includes(mode)||mode==='real'&&flag!=='ENABLED')throw Error('真实行情公开发布未获最终确认，已在采集前阻止');}
 function boundedSource(fetchImpl,date){const counts={FMP:0,FRED:0},seen=new Set();return {counts,request:async(url,options)=>{
@@ -24,11 +25,13 @@ async function buildCandidate({dir,date,previous=null,mode='simulation',incomple
  const raw=path.join(dir,'private-input'),out=path.join(dir,'validated-output');await fs.mkdir(raw,{recursive:true});
  if(previous){await writeBundle(raw,previous);await writeBundle(out,previous);}
  const source=boundedSource(fetchImpl||(mode==='simulation'?sourceFetch(date,{incomplete}):fetch),date),opts={dir:raw,date,now,budget:6,key:mode==='simulation'?'MOCK_ONLY_NOT_A_CREDENTIAL':key,fetchImpl:source.request,testMode:mode==='simulation'};
+ try{
  // Wait for both slower FRED sources before spending any FMP calls.
  await collectSox(opts);await collectExtra({...opts,symbol:'NBI'});
  const sox=JSON.parse(await fs.readFile(path.join(raw,'sox.json'))),nbi=JSON.parse(await fs.readFile(path.join(raw,'nbi.json')));
  if(core.soxForDate(sox,date).status!=='current'||core.dailySeriesForDate(nbi,'NBI',date).status!=='current')throw Error('FRED目标日尚未就绪；保留上一完整版本');
  await collect(opts);checkIndustrySnapshot(JSON.parse(await fs.readFile(path.join(raw,'snapshots',date+'.json'),'utf8')));await syncPublic({sourceDir:raw,dir:out,now});const bundle=await loadBundle(out);checkIndustryBundle(bundle);checkBundle(bundle,now);return {alreadyComplete:false,bundle,counts:source.counts};
+ }catch(e){e.sourceRequests=mode==='real'?{...source.counts}:{FMP:0,FRED:0};throw e;}
 }
 async function existingBundle(prefix){
  let pointer;try{pointer=JSON.parse(await fs.readFile(path.join(prefix,'latest.json'),'utf8'));}catch(e){if(e.code==='ENOENT')return null;throw e;}
@@ -43,22 +46,29 @@ async function bootstrapReal(store,root){
 }
 // A real batch keeps the tested 6+2 maximum. Mock units remain isolated from provider usage.
 const GENESIS='8f8a7ba12051488484868566b9891ccb3b626a66';
-function externalFor({mode,now=new Date(),declaredFmp,declaredFred,confirmed=false,legacy}){
+function externalFor({mode,now=new Date(),declaredFmp,declaredFred,confirmed=false,legacy,credit}){
  const coversFrom=new Date(now.getTime()-172800000).toISOString();
  if(mode==='simulation')return {known:true,fmp:0,fred:0,observedAt:now.toISOString(),coversFrom};
  if(confirmed!==true||![declaredFmp,declaredFred].every(x=>typeof x==='string'&&/^\d{1,3}$/.test(x)))throw stop('BUDGET_EXTERNAL_UNKNOWN','必须明确确认过去48小时未纳入Git真实账本的FMP/FRED消耗');
+ if(credit)return {known:true,fmp:Number(declaredFmp),fred:Number(declaredFred),observedAt:now.toISOString(),coversFrom:credit.observedAt};
  if(!legacy||legacy.version!==1||legacy.kind!=='CLOUD_VALIDATION_BUDGET_ONLY'||!Array.isArray(legacy.experiments))throw stop('BUDGET_EXTERNAL_UNKNOWN','旧真实调用基线无法核验');
  const relevant=legacy.experiments.filter(r=>{if(!Number.isFinite(Date.parse(r.reservedAt))||Date.parse(r.reservedAt)>now.getTime()||![r.fmp,r.fred].every(n=>Number.isSafeInteger(n)&&n>=0))throw stop('BUDGET_EXTERNAL_UNKNOWN','旧实验消耗记录不完整');return r.reservedAt>=coversFrom;});
  const known=relevant.reduce((a,r)=>({fmp:a.fmp+r.fmp,fred:a.fred+r.fred}),{fmp:0,fred:0});
  const fmp=Number(declaredFmp),fred=Number(declaredFred);if(fmp<known.fmp||fred<known.fred)throw stop('BUDGET_EXTERNAL_LOW','外部声明低于旧真实实验预留；不重复相加相同基线');
  return {known:true,fmp,fred,observedAt:now.toISOString(),coversFrom};
 }
+function evidenceFromInputs(env){
+ const values=[env.VERIFIED_ACCOUNT_AT,env.VERIFIED_ACCOUNT_USED,env.VERIFIED_ACCOUNT_REMAINING,env.CREDIT_CHECKPOINT_REVISION];
+ if(values.some(v=>typeof v!=='string'||!v.trim())||!values.slice(1).every(v=>/^[0-9]+$/.test(v)))throw stop('BUDGET_EVIDENCE_INVALID','请填写账户证据时间、已用、剩余及账本锚点，不能自动更新时间');
+ return makeEvidence({observedAt:values[0],used:Number(values[1]),remaining:Number(values[2]),accountedThroughRevision:Number(values[3]),verified:env.CONFIRM_ACCOUNT_EVIDENCE==='true'});
+}
 function validDate(date,now){if(!core.isTradingDay(date)||date>core.expectedSession(now))throw Error('目标尚未收盘或为休市日');}
-async function prepareRun({mode,date,runId,now=new Date(),flag,budgetStore,loadExisting,publicationHead,external}){
+async function prepareRun({mode,date,runId,now=new Date(),flag,budgetStore,loadExisting,publicationHead,external,credit}){
  gate(mode,flag);validDate(date,now);const existing=await loadExisting();
  if(existing){checkIndustryBundle(existing.bundle);checkBundle(existing.bundle,now);if(existing.bundle['manifest.json'].dates.includes(date))return {shouldRun:false,reason:'already_complete'};}
+ const evaluatedCredit=typeof credit==='function'?await credit():credit;
  const id='market-'+mode+'-'+runId;
- const grant=await reserveAndVerify(budgetStore,{id,namespace:mode,targetDate:date,cost:mode==='real'?{fmp:6,fred:2}:{fmp:1,fred:0},external:typeof external==='function'?await external():external},{now});
+ const grant=await reserveAndVerify(budgetStore,{id,namespace:mode,targetDate:date,cost:mode==='real'?{fmp:6,fred:2}:{fmp:1,fred:0},external:typeof external==='function'?await external(evaluatedCredit):external,...(evaluatedCredit?{credit:evaluatedCredit}:{})},{now});
  if(grant.authorized!==true)throw stop('BUDGET_DUPLICATE','本任务已有预算预留，禁止重跑');
  return {shouldRun:true,mode,date,runId:String(runId),publicationHead,budgetGrant:grant};
 }
@@ -72,7 +82,7 @@ async function collectRun({envelope,mode,runId,now=new Date(),flag,budgetStore,p
  await verifyGrant(budgetStore,g,{now:clock()});
  const candidate=await buildCandidate({dir,date:e.date,previous,mode,incomplete,now,key,fetchImpl});
  if(candidate.alreadyComplete&&old)return {skipped:true,sourceRequests:{FMP:0,FRED:0}};
- const result=await publish({bundle:candidate.bundle,previous,kind:mode==='real'?'REAL_MARKET_DATA':'SYNTHETIC_TEST_ONLY',allowReal:mode==='real'&&flag==='ENABLED',store:publicationStore,expectedHead:e.publicationHead,now});
+ let result;try{result=await publish({bundle:candidate.bundle,previous,kind:mode==='real'?'REAL_MARKET_DATA':'SYNTHETIC_TEST_ONLY',allowReal:mode==='real'&&flag==='ENABLED',store:publicationStore,expectedHead:e.publicationHead,now});}catch(error){error.sourceRequests=mode==='real'?{...candidate.counts}:{FMP:0,FRED:0};throw error;}
  return {mode,kind:result.pointer.kind,targetDate:e.date,published:true,release:result.pointer.release,dates:result.dates,coverage:result.coverage,sourceRequests:mode==='real'?candidate.counts:{FMP:0,FRED:0},mockCalls:mode==='simulation'?candidate.counts:undefined,budgetCommit:g.head};
 }
 async function main(){
@@ -83,13 +93,14 @@ async function main(){
  const store=githubStore({token:process.env.GH_TOKEN}),budgetStore=createGitBudgetStore({api:store.api,genesis:GENESIS}),date=process.env.TARGET_DATE||core.expectedSession(),prefix='market/v1',loadExisting=()=>existingBundle(prefix);
  if(process.argv[2]==='prepare'){
   const now=new Date();
-  const external=async()=>externalFor({mode,now,declaredFmp:process.env.EXTERNAL_FMP_CALLS,declaredFred:process.env.EXTERNAL_FRED_CALLS,confirmed:process.env.CONFIRM_EXTERNAL_CALLS==='true',legacy:JSON.parse(await fs.readFile('lab/cloud-budget.json','utf8'))});
-  const envelope=await prepareRun({mode,date,runId:process.env.GITHUB_RUN_ID,now,flag,budgetStore,loadExisting,publicationHead:cp.execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),external});
+  const credit=()=>evidenceFromInputs(process.env);
+  const external=async(credit)=>externalFor({mode,now,declaredFmp:process.env.EXTERNAL_FMP_CALLS,declaredFred:process.env.EXTERNAL_FRED_CALLS,confirmed:process.env.CONFIRM_EXTERNAL_CALLS==='true',credit,legacy:JSON.parse(await fs.readFile('lab/cloud-budget.json','utf8'))});
+  const envelope=await prepareRun({mode,date,runId:process.env.GITHUB_RUN_ID,now,flag,budgetStore,loadExisting,publicationHead:cp.execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),external,credit});
   await atomicJson(path.join(root,'grant.json'),envelope);await fs.appendFile(process.env.GITHUB_OUTPUT,'should_run='+envelope.shouldRun+'\n');console.log(JSON.stringify({mode,shouldRun:envelope.shouldRun,reason:envelope.reason,budgetCommit:envelope.budgetGrant?.head}));
  }else if(process.argv[2]==='collect'){
   const envelope=JSON.parse(await fs.readFile(path.join(root,'grant.json'),'utf8'));
   const result=await collectRun({envelope,mode,runId:process.env.GITHUB_RUN_ID,flag,budgetStore,publicationStore:store,loadExisting,bootstrap:()=>bootstrapReal(store,root),dir:root,incomplete:false,key:process.env.FMP_API_KEY});console.log(JSON.stringify(result));
  }else throw Error('未知工作流步骤');
 }
-module.exports={gate,boundedSource,buildCandidate,existingBundle,GENESIS,externalFor,prepareRun,collectRun};
+module.exports={gate,boundedSource,buildCandidate,existingBundle,GENESIS,externalFor,evidenceFromInputs,prepareRun,collectRun};
 if(require.main===module)main().catch(e=>{reportFailure(e);console.error('任务安全停止；预算预留不退回，上一发布版本保留。');process.exitCode=1;});
